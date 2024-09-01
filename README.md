@@ -1,4 +1,4 @@
-<img align="right" alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
+<img align="right" alt="Logo MongoDB GIF" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
 
 # MongoDB
 
