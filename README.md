@@ -1,8 +1,9 @@
-<img align="right" alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
-
-
-
+<p>
 # MongoDB
+  <img align="right" alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
+</p>
+
+
 ## Instalación de MongoDB, Mongo Comprass y MongoSH
 Para iniciar el recorrio en MongoDB, fué necesario no solo la instalación del motor de DB, sino de la interface Mongo Compass y de MongoSH para su manejo desde línea de comandos.
 1. Se procedió a la instalación de MongoDB, que luego de su ejecusión fué necesario no solo configurar su incorporación de permisos en la variables del entorno del sistema operativo `C:\Program Files\MongoDB\Server\7.0\bin` en el `PATH`, sino además, crear una carpeta denominada `db` en el directorio que MongoDB tiene predeterminado `C:\data\db` para poder realizar la instalación de forma exitosa. Posteriormente, se ejecutar en el simbolo del sistema `cmd` el comando `mongod`, y si la respuesta del log contempla, significa:
