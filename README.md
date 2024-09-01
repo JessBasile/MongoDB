@@ -28,3 +28,10 @@ Asimismo, dentro de la carpeta `mongosh-2.3.0-win32-x64` creada luego de la extr
 Using MongoDB:          7.0.14
 Using Mongosh:          2.3.0
 ```
+Por último, como prueba final del adecuado funcionamiento de mongosh, puede ejecutarse desde terminal el comando `show dbs`, que arrojará todas las bases de datos que se encuentran creadas por default en el mongodb:
+```
+admin   40.00 KiB
+config  60.00 KiB
+local   72.00 KiB
+```
+De esta manera, se encuentra finalizada la instalación del motor y sus diferentes interfaces para comenzar a interactuar con la herramienta.
