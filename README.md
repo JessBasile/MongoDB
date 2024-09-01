@@ -1,5 +1,6 @@
 <img align="right" alt="Logo MongoDB GIF" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
 
+
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
 Para iniciar el recorrido en MongoDB, fue necesario no solo la instalación del motor de DB, sino de la interfaz Mongo Compass y de MongoSH para su manejo desde línea de comandos.
