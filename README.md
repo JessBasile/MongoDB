@@ -1,9 +1,6 @@
+<img align="right" alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
+
 # MongoDB
-
-<div align="center">
-    <img alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
-</div>
-
 
 ## Instalación de MongoDB, Mongo Comprass y MongoSH
 Para iniciar el recorrio en MongoDB, fué necesario no solo la instalación del motor de DB, sino de la interface Mongo Compass y de MongoSH para su manejo desde línea de comandos.
