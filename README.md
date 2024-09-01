@@ -1,7 +1,8 @@
 <img align="right" alt="Logo MongoDB GIF" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
 
+<br><br><br>
 
-## {Instalación de MongoDB, Mongo Compass y MongoSH}
+## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
 Para iniciar el recorrido en MongoDB, fue necesario no solo la instalación del motor de DB, sino de la interfaz Mongo Compass y de MongoSH para su manejo desde línea de comandos.
 
@@ -15,6 +16,8 @@ Para iniciar el recorrido en MongoDB, fue necesario no solo la instalación del 
    <img align="right" alt="Logo Compass" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/compas.png">
 
 2. Luego se efectúa la instalación de ***Mongo Compass***, la cual no requiere modificación en las variables del entorno, dado que es una interfaz gráfica que depende de MongoDB. Solo debe verificarse que el motor corra adecuadamente con el comando `mongod`, y utilizará el localhost puerto 27017 predeterminado en MongoDB.
+
+
 
 3. Se instala ***MongoSH***, es decir, MongoShell para habilitar la ejecución del motor a través de línea de comandos.
 
