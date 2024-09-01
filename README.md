@@ -13,7 +13,7 @@ Para iniciar el recorrido en MongoDB, fue necesario no solo la instalación del 
    + "WiredTiger opened": El motor de almacenamiento WiredTiger se ha abierto exitosamente.
    + "recovery was completed successfully": La recuperación del registro de transacciones se completó con éxito.
 
-   <img align="right" alt="Logo Compass" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/compas.png">
+   <img align="right" alt="Logo Compass" width="200" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/compas.png">
 
 2. Luego se efectúa la instalación de ***Mongo Compass***, la cual no requiere modificación en las variables del entorno, dado que es una interfaz gráfica que depende de MongoDB. Solo debe verificarse que el motor corra adecuadamente con el comando `mongod`, y utilizará el localhost puerto 27017 predeterminado en MongoDB.
 
