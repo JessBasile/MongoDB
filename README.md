@@ -1,7 +1,8 @@
-<p>
-# MongoDB
-  <img align="right" alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
+<p align="left">
+  <strong># MongoDB</strong>
 </p>
+
+<img align="right" alt="Logo MongoDB" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/logo_mongodb.jpg">
 
 
 ## Instalación de MongoDB, Mongo Comprass y MongoSH
