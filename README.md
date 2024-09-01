@@ -8,6 +8,9 @@ Para iniciar el recorrio en MongoDB, fué necesario no solo la instalación del 
 + "MongoDB starting": MongoDB ha comenzado el proceso de arranque.
 + "WiredTiger opened": El motor de almacenamiento WiredTiger se ha abierto exitosamente.
 + "recovery was completed successfully": La recuperación del registro de transacciones se completó con éxito.
+  
+<img align="right" alt="Logo Compass" width="100" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/compass.png">
 2. Luego se efectua la instalación de Mongo Compass, la cual que no requiere modificación en las variables del entorno, dado que es una inteface gráfica que depende de MongoDB. Solo debe verificarse que el motor corra adecuadamente con el comando mongod, y utilizará el localhost puerto 27017 predeterminado en MongoDB.
+  
 3. Se intala MonsgoSH, es decir, MongoShell para habilitar la ejecución del motor a través de línea de comandos. 
  
