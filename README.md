@@ -1,10 +1,6 @@
-<img align="right" alt="Logo MongoDB GIF" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
-
-&nbsp;
-
-&nbsp;
-
-&nbsp;
+<p style="text-align: center;">
+    <img alt="Logo MongoDB GIF" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
+</p>
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
