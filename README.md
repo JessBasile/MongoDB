@@ -66,4 +66,4 @@ Cada respuesta tiene un significado específico detallado a continuación:
 + `admin:` Es la base de datos administrativa que MongoDB utiliza para manejar operaciones administrativas del clúster.
 + `local:` Es una base de datos interna utilizada por MongoDB para almacenar información sobre el estado del clúster y el registro de operaciones.
 
-Finalmente la cuenta de MongoDB Atlas quedó exitosamente creada, y vinculada a MondoShell para comenzar a trabajar :computer:
+Finalmente la cuenta de MongoDB Atlas quedó exitosamente creada, y vinculada a MongoDBShell para comenzar a trabajar :computer:
