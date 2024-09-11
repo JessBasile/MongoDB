@@ -70,3 +70,95 @@ Cada respuesta tiene un significado específico justificado a continuación:
 + `local:` Es una base de datos interna utilizada por MongoDB para almacenar información sobre el estado del clúster y el registro de operaciones.
 
 Finalmente la cuenta de MongoDB Atlas quedó exitosamente creada, y vinculada a MongoDBShell para comenzar a trabajar :computer:
+
+## { Consideraciones importantes en MongoDB }
+
++ Una colección es un conjunto de documentos, similar a una tabla en una base de datos relacional.
++ Un documento es un registro individual en una colección, similar a una fila en una tabla relacional.
+Por consiguiente, una colección puede contener muchos documentos. Cada documento puede tener una estructura diferente, aunque generalmente se sigue una estructura común dentro de una colección para mantener la coherencia de los datos.
+
+## { Primeros comandos en MongoDB Shell }
+
+El primer comando en MongoDB Shell que se suele utilizar es `db.help` que proporciona información sobre las funciones básicas que se pueden utilizar dentro de la base de datos en la que se encuentra posicionado a la hora de ejecutar el comando.
+Con `show dbs` o `show databases` se pueden observar todas las bases de datos que posee el motor de Mongo en el momento de la consulta. Otra alternativa que proporciona un detalle con mayor información en un formato de estructura json es: `db.adminCommand({ listDatabases: 1 })`
+Para ubicarse dentro de una base de datos específica en MongoDB Shell se realiza utilizando el comando `use nombre_base_de_datos` y aparecerá en terminal el nombre de la base.
+En caso de ubicarnos dentro de una base de datos, y desconocer de cuál se trata, puede utilizarse el comando `db.nombre_base_datos` y proporcionará la información del nombre de la base de datos en la que estamos posicionados.
+El comando `db.stats()` muestra una estadística de la base de datos en la que nos encontramos alojados, la cantidad de colecciones, los tipos de datos, cantidad de objetos, índices, tamaño, etc.
+El comando `db.dropdatabase()` borra defintivamente una base de datos en específico (en la que me encuentre alojado al momento de ejecutar el comando).
+Para ver las colecciones que conforman la BD se ejecuta el comando `show collections`.
+Si se desea renombrar una colección en particular sobre una base de datos determinadas el comando que se utiliza es: `db["my collection"].renameCollection("myNewCollection")` otra alternativa es: `db.myCollection.renameCollection("myNewCollection")` siempre y cuando el nombre de la colección no tenga espacios, lo cual no es recomendable.
+También es posible dropear una colección que el comando de MongoDB Shell es: `db.collectionName.drop()`, cuando la respuestas es “true” significa que se borró exitosamente.
+Para crear una colección el comando es: `db.createCollection("nombre")` siempre situado anteriormente en la base de datos que deseo crear esa nueva colección.
+
+## { Operaciones CRUD dentro de MondoDB Shell }
+
++ _Inserción de un documento individual_: Es utilizado para insertar documentos en la colección indicada.
+```sql
+db.mycoleccion.insertOne({"nombre": "Jess","edad": 35,"activo":true,"fecha": ISODate("2024-08-26T19:49:25.197Z")})
+```
+La típica respuesta exitosa seria: 
+```sql
+{"acknowledged" : true,
+  "insertedId" : ObjectId("64f5b2a8e1234567890abcdef")}
+```
+La cual indica el N° de ObjectId generado. 
+
++ _Inserción masiva_: 
+```sql
+db.mycoleccion.insertMany([{nombre:"Juan", edad: 31,activo:true},{nombre:"Sofia",edad:24},{nombre:"Luis"},{ _id: 1,nombre:"Lusy",edad:50}])
+```
+En ese caso los corchetes `[]` indican que se trabaja con un arreglo de documentos, y las llaves `{}` delimitan los elementos de objeto json.  Para corroborar si la actualización en compass es lo mismo que en Shell se puede ejecutar el comando: 
+```sql
+db.mycoleccion.find().pretty() (que muestra todos los documentos de una colección)
+```
+En ese ejemplo la colección es educacionit y sus documentos son Jess, Juan, etc. con sus correspondientes claves/valor.
+
++ _Modificación/Actualización individual de un solo documento_: Se realiza utilizando un filtro (lo que sería where en SQL). Para un solo dato, en esta caso la edad cuando el nombre sea Juan:
+```sql
+db.mycollection.updateOne(
+  {name: "Juan"},               // Filtro
+  {$set: {edad: 32}}            // Actualización
+)
+```
+`Aclaración:` Si se ejecuta una actualización sobre una clave que no existe y le deseo asignar un valor, incorporará la clave y el valor. En ese caso, para revertirlo deberá ser utilizado el comando “unset” con la siguiente estructura de ejemplo:
+```sql
+db.mycollection.updateOne(
+  {name: "Juan"},               // Filtro para encontrar el documento
+  {$unset: {edad: ""}}          // Elimina el campo 'edad'
+)
+```
+Para modificar dos datos cuando el nombre es Juan: cambia la edad e incrementar el id con un número más:
+```sql
+db.mycollection.updateOne(
+  {name: "Juan"},               // Filtro
+  {$set: {edad: 33},           // Actualización del campo 'edad'
+    $inc: {id: 1}               // Incremento del campo 'id' en 1
+  }
+)
+```
+
++ _Modificación/Actualización de varios documentos en función de un filtro_: En este caso el filtro será el nombre (suponiendo que esa colección tiene más de un documento con el nombre María), y modificaría todas las edades de las personas que se llamen de ese modo:
+```sql
+db.collection.updateMany(
+  {nombre: "Maria"},            // Filtro
+  { $set: {edad: 35} }          // Actualización
+)
+```
+Caso especial de modificación/actualización con potencial inserción: en el caso que se desee modificar un registro que cumpla con ciertos filtros, y si no está, incorporarlo se incluirá en la línea de comando, la sintaxis “upsert” que insertará si no logra encontrar coincidencias, y generará un nuevo ObjectId.
+db.mycoleccion.updateMany({nombre: "Juan"},{$set:{edad: 25}},{upsert: true}) 
+En conclusión, con la utilización del comando upsert, la base de datos va a cambiar ya sea por actualización o por insersión.
+
+Importante: En caso de colocar el filtro y utilizar solo las llaves sin ninguna clave {“”} se modificarán todas las claves y valores de todos los documentos, y si ese valor no existe en un documento lo incorporará.
+
+Eliminación de un registro: Solo se elimina el primer registro que cumpla con las características del filtro, si existen más registros con las mismas características no serán adulterados porque el comando es One. 
+db.mycoleccion.deleteOne({nombre: "Juan"})
+Para mayor especificidad podría filtrarse según ObjectId, de todos modos, existe otra alternativa para brindar especificidad incorporando operadores lógicos/condicionales, tales como: $and, $or, $not, $nor, a continuación, un ejemplo:
+db.mycoleccion.deleteOne({$and:[{nombre: "Juan"},{edad: 25}]})
+Eliminación de varios registros simultáneos: Se eliminarán todos los registros que cumplan las condiciones del filtro aplicado, un ejemplo del comando:
+db.mycoleccion.deleteMany({$and:[{nombre: "Juan"},{edad: 25}]})
+
+Lectura de documentos en una colección: En MongoDB no existe SELECT, sino “find” que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
+db.mycoleccion.find()
+Lectura con condiciones y comentarios: El operador $comment se utiliza para agregar comentarios a una consulta en MongoDB que no afecta los resultados de esa consulta. Se suele utilizar para luego poder rastrear las consultas efectuadas y su finalidad (auditoria).
+db.mycoleccion.find({“nombre”:”Juan”}, $comment: “Buscar documentos con el nombre “Juan”})
+
