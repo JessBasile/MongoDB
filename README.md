@@ -47,6 +47,7 @@ MongoDB Atlas es un servicio de bases de datos en la nube administrado por Mongo
 Una de las características más interesantes de MongoDB Altas es su capacidad de gestionar y visualizar datos geoespaciales a través del schema. Esto permite representar ubicaciones geográficas y distribuciones espaciales de manera intuitiva. La plataforma facilita la creación de índices geoespaciales, que optimizan las consultas sobre datos de ubicación y permiten realizar búsquedas de proximidad o encontrar puntos dentro de áreas específicas.
 Atlas no solo simplifica la administración de datos geoespaciales, sino que también proporciona herramientas visuales para representar estos datos en mapas interactivos. Puede observarse cómo se distribuyen las ubicaciones en un mapa, identificar patrones espaciales y tomar decisiones basadas en la visualización geográfica.
 La integración de estas capacidades en MongoDB Atlas convierte a la plataforma en una solución ideal para aplicaciones que requieren análisis y representación geoespacial, desde la distribución geográfica de algo en particular o hasta la planificación logística.
+
 <p align="right">
   <img alt="Mundo girando" src="ruta/a/tu/imagen/mundo.gif" style="max-width: 100%; height: auto;"/>
 </p>
