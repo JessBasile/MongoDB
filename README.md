@@ -24,12 +24,12 @@ Para iniciar la utilización de MongoDB, fue necesario no solo la instalación d
 Asimismo, dentro de la carpeta `mongosh-2.3.0-win32-x64` creada luego de la extracción del .zip, deberá controlarse que no figure ningún otro documento con extensión .zip, y en caso de identificar alguno, también deberá ser extraído allí mismo, en este caso se ubica uno denominado `mongosh.1` extraído ahí mismo. Esto, a su vez, implica efectuar los pasos para otorgar los permisos necesarios a través de las variables de entorno en el `PATH` adhiriendo la dirección `C:\Program Files\MongoSH\mongosh-2.3.0-win32-x64\bin`. Posteriormente, se deberán ejecutar algunos comandos para conectar MongoDB con MongoSH y poder operar desde la terminal satisfactoriamente:
 + "`mongosh --version`": que deberá devolver el dato de la versión instalada si fué exitosa, en mi caso respondió: `2.3.0`.
 + "`mongosh`": si devuelve que la conexión pudo establecerse y arroja el dato de las versiones de ambos Mongos, entonces la instalación concluyó:
-```
+```sql
 Using MongoDB:          7.0.14
 Using Mongosh:          2.3.0
 ```
 Por último, como prueba final del adecuado funcionamiento de mongosh, puede ejecutarse desde terminal el comando `show dbs`, que arrojará todas las bases de datos que se encuentran creadas por default en el mongodb:
-```
+```sql
 admin   40.00 KiB
 config  60.00 KiB
 local   72.00 KiB
@@ -49,17 +49,17 @@ _Implementación:_ Para poder operar en la nube se requerirá ingresar en la pá
 ![Botón Create](https://github.com/JessBasile/MongoDB/raw/main/imagenes/create.png)
 
 Finalmente, se debe elegir un metodo de conexión sobre el cual será recomendable seleccionar la opción "_Conductores_". Luego se procederá a configurar esa conexión a través de línea de comando cmd, tipeando inicialmente:
-```
+```sql
 mongosh "mongodb+srv://JessBasile:contraseña@reportcluster.f0vgx.mongodb.net/?retryWrites=true&w=majority"
 ```
 `Aclaración:`En este caso todavía no se hace a través de Node.js debido a que no se instaló el software en el ordenador.
 
 La respuesta es exitosa cuando prporciona el log ID, las credenciales de conexión y las versiones de MongoDB y Mongosh. Luego puede "testearse" esa conexión exitosa utilizando los comandos:
-```
+```sql
 show dbs
 ```
 En este caso particular, la línea de comando respondió:
-```
+```sql
 sample_mflix  110.59 MiB
 admin         368.00 KiB
 local           6.88 GiB
@@ -80,21 +80,27 @@ Por consiguiente, una colección puede contener muchos documentos. Cada document
 ## { Primeros comandos en MongoDB Shell }
 
 El primer comando en MongoDB Shell que se suele utilizar es `db.help` que proporciona información sobre las funciones básicas que se pueden utilizar dentro de la base de datos en la que se encuentra posicionado a la hora de ejecutar el comando.
+
 Con `show dbs` o `show databases` se pueden observar todas las bases de datos que posee el motor de Mongo en el momento de la consulta. Otra alternativa que proporciona un detalle con mayor información en un formato de estructura json es: `db.adminCommand({ listDatabases: 1 })`
+
 Para ubicarse dentro de una base de datos específica en MongoDB Shell se realiza utilizando el comando `use nombre_base_de_datos` y aparecerá en terminal el nombre de la base.
 En caso de ubicarnos dentro de una base de datos, y desconocer de cuál se trata, puede utilizarse el comando `db.nombre_base_datos` y proporcionará la información del nombre de la base de datos en la que estamos posicionados.
+
 El comando `db.stats()` muestra una estadística de la base de datos en la que nos encontramos alojados, la cantidad de colecciones, los tipos de datos, cantidad de objetos, índices, tamaño, etc.
-El comando `db.dropdatabase()` borra defintivamente una base de datos en específico (en la que me encuentre alojado al momento de ejecutar el comando).
+
+El comando `db.dropdatabase()` borra defintivamente una base de datos en específico (en la que me encuentre alojado al momento de ejecutar el comando). También es posible dropear una colección que el comando de MongoDB Shell es: `db.collectionName.drop()`, cuando la respuestas es “true” significa que se borró exitosamente.
+
 Para ver las colecciones que conforman la BD se ejecuta el comando `show collections`.
+
 Si se desea renombrar una colección en particular sobre una base de datos determinadas el comando que se utiliza es: `db["my collection"].renameCollection("myNewCollection")` otra alternativa es: `db.myCollection.renameCollection("myNewCollection")` siempre y cuando el nombre de la colección no tenga espacios, lo cual no es recomendable.
-También es posible dropear una colección que el comando de MongoDB Shell es: `db.collectionName.drop()`, cuando la respuestas es “true” significa que se borró exitosamente.
+
 Para crear una colección el comando es: `db.createCollection("nombre")` siempre situado anteriormente en la base de datos que deseo crear esa nueva colección.
 
 ## { Operaciones CRUD dentro de MondoDB Shell }
 
 + _Inserción de un documento individual_: Es utilizado para insertar documentos en la colección indicada.
 ```sql
-db.mycoleccion.insertOne({"nombre": "Jess","edad": 35,"activo":true,"fecha": ISODate("2024-08-26T19:49:25.197Z")})
+db.mycoleccion.insertOne({"nombre": "Juan","edad": 32,"activo":true,"fecha": ISODate("2024-08-26T19:49:25.197Z")})
 ```
 La típica respuesta exitosa seria: 
 ```sql
@@ -140,25 +146,37 @@ db.mycollection.updateOne(
 + _Modificación/Actualización de varios documentos en función de un filtro_: En este caso el filtro será el nombre (suponiendo que esa colección tiene más de un documento con el nombre María), y modificaría todas las edades de las personas que se llamen de ese modo:
 ```sql
 db.collection.updateMany(
-  {nombre: "Maria"},            // Filtro
+  {nombre: "Juan"},            // Filtro
   { $set: {edad: 35} }          // Actualización
 )
 ```
-Caso especial de modificación/actualización con potencial inserción: en el caso que se desee modificar un registro que cumpla con ciertos filtros, y si no está, incorporarlo se incluirá en la línea de comando, la sintaxis “upsert” que insertará si no logra encontrar coincidencias, y generará un nuevo ObjectId.
-db.mycoleccion.updateMany({nombre: "Juan"},{$set:{edad: 25}},{upsert: true}) 
-En conclusión, con la utilización del comando upsert, la base de datos va a cambiar ya sea por actualización o por insersión.
++ _Caso especial de modificación/actualización con potencial inserción_: En el caso que se desee modificar un registro que cumpla con ciertos filtros, pero ningún documento que compone la colección cumpla con esas caracteristicas, podrá ser incorporado si en la línea de comando se incluye la sintaxis “upsert:true” que insertará si no logra encontrar coincidencias, y generará un nuevo ObjectId.
+```sql
+db.mycoleccion.updateMany({nombre: "Juan"},{$set:{edad: 25}},{upsert: true})
+```
+En conclusión, con la utilización del comando upsert, ***la base de datos va a cambiar ya sea por actualización o por insersión.***
 
-Importante: En caso de colocar el filtro y utilizar solo las llaves sin ninguna clave {“”} se modificarán todas las claves y valores de todos los documentos, y si ese valor no existe en un documento lo incorporará.
+`Importante:` En caso de colocar el filtro y ***utilizar solo las llaves sin ninguna clave `{“”}` se modificarán todas las claves y valores de todos los documentos, y si ese valor no existe en un documento lo incorporará.***
 
-Eliminación de un registro: Solo se elimina el primer registro que cumpla con las características del filtro, si existen más registros con las mismas características no serán adulterados porque el comando es One. 
++ _Eliminación de un registro_: Solo se elimina el primer registro que cumpla con las características del filtro, si existen más registros con las mismas condiciones no serán adulterados puesto que el comando es **One**. 
+```sql
 db.mycoleccion.deleteOne({nombre: "Juan"})
-Para mayor especificidad podría filtrarse según ObjectId, de todos modos, existe otra alternativa para brindar especificidad incorporando operadores lógicos/condicionales, tales como: $and, $or, $not, $nor, a continuación, un ejemplo:
+```
+Para mayor especificidad podría filtrarse según ObjectId, de todos modos, existe otra alternativa para brindar especificidad incorporando operadores lógicos/condicionales, tales como: `$and`, `$or`, `$not`, `$nor`, a continuación, un ejemplo:
+```sql
 db.mycoleccion.deleteOne({$and:[{nombre: "Juan"},{edad: 25}]})
-Eliminación de varios registros simultáneos: Se eliminarán todos los registros que cumplan las condiciones del filtro aplicado, un ejemplo del comando:
+```
++ _Eliminación de varios registros simultáneos_: Se eliminarán todos los registros que cumplan las condiciones del filtro aplicado, un ejemplo del comando:
+```sql
 db.mycoleccion.deleteMany({$and:[{nombre: "Juan"},{edad: 25}]})
+```
 
-Lectura de documentos en una colección: En MongoDB no existe SELECT, sino “find” que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
++ _Lectura de documentos en una colección_: En MongoDB no existe SELECT como en SQL, sino `find` que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
+```sql
 db.mycoleccion.find()
-Lectura con condiciones y comentarios: El operador $comment se utiliza para agregar comentarios a una consulta en MongoDB que no afecta los resultados de esa consulta. Se suele utilizar para luego poder rastrear las consultas efectuadas y su finalidad (auditoria).
+```
++ _Lectura con condiciones y comentarios_: El operador `$comment` se utiliza para agregar comentarios a una consulta en MongoDB que no afecta los resultados de la misma. Se suele utilizar para luego rastrear las consultas efectuadas y su finalidad (auditoria).
+```sql
 db.mycoleccion.find({“nombre”:”Juan”}, $comment: “Buscar documentos con el nombre “Juan”})
+```
 
