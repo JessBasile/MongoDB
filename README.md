@@ -180,6 +180,11 @@ db.mycoleccion.find()
 db.mycoleccion.find({“nombre”:”Juan”}, $comment: “Buscar documentos con el nombre “Juan”})
 ```
 
++ _Caso Especial: Importación desde línea de comandos para archivos csv_ : Este tipo de operaciones deben efectuarse desde terminal de Windows `cmd`, dado que MongoShell no la admite, y el comando utilizado para tal fin es:
+```sql
+mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --type csv --headerline --file "C:\ruta\clientes.csv"
+```
+
 ## { Operaciones CRUD desde MondoDB Compass }
 
 + _Inserción de un documento json_: Se posiciona sobre la colección y se selecciona la opción `ADD DATA` ---> `Insert document` (calculará el ObjectId y se debe agregar luego de la llave } las claves y valores.
@@ -193,9 +198,3 @@ db.mycoleccion.find({“nombre”:”Juan”}, $comment: “Buscar documentos co
 + _Eliminación de un registro_: Sobre el documento que se desea elimninar, se deberá hacer click en cesto de residuos que figura en la parte superior derecha, y se confirma.
 
 + _Lectura de documentos en una colección_: Debe abrirse la colección, en la que puede escrolearse y observar visualmente su composición si efectuar ningún comando.
-
-+ _Caso Especial: Importación desde línea de comandos para archivos csv_
-Este tipo de operaciones deben efectuarse desde terminal de Windows `cmd`, dado que MongoShell no la admite, y el comando utilizado para tal fin es:
-```sql
-mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --type csv --headerline --file "C:\ruta\clientes.csv"
-```
