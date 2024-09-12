@@ -84,7 +84,7 @@ El primer comando en MongoDB Shell que se suele utilizar es `db.help` que propor
 Con `show dbs` o `show databases` se pueden observar todas las bases de datos que posee el motor de Mongo en el momento de la consulta. Otra alternativa que proporciona un detalle con mayor información en un formato de estructura json es: `db.adminCommand({ listDatabases: 1 })`
 
 Para ubicarse dentro de una base de datos específica en MongoDB Shell se realiza utilizando el comando `use nombre_base_de_datos` y aparecerá en terminal el nombre de la base.
-En caso de ubicarnos dentro de una base de datos, y desconocer de cuál se trata, puede utilizarse el comando `db.nombre_base_datos` y proporcionará la información del nombre de la base de datos en la que estamos posicionados.
+En caso de ubicarnos dentro de una base de datos, y desconocer de cuál se trata, puede utilizarse el comando `db` y proporcionará la información del nombre de la base de datos en la que estamos posicionados.
 
 El comando `db.stats()` muestra una estadística de la base de datos en la que nos encontramos alojados, la cantidad de colecciones, los tipos de datos, cantidad de objetos, índices, tamaño, etc.
 
