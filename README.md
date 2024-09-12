@@ -115,7 +115,7 @@ db.mycoleccion.insertMany([{nombre:"Juan", edad: 31,activo:true},{nombre:"Sofia"
 ```
 En ese caso los corchetes `[]` indican que se trabaja con un arreglo de documentos, y las llaves `{}` delimitan los elementos de objeto json.  Para corroborar si la actualización en compass es lo mismo que en Shell se puede ejecutar el comando: 
 ```sql
-db.mycoleccion.find().pretty() (que muestra todos los documentos de una colección)
+db.mycoleccion.find().pretty() //que muestra todos los documentos de una colección
 ```
 En ese ejemplo la colección es educacionit y sus documentos son Jess, Juan, etc. con sus correspondientes claves/valor.
 
