@@ -187,7 +187,7 @@ mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --ty
 
 ## { Operaciones CRUD desde MondoDB Compass }
 
-+ _Inserción de un documento json_: Se posiciona sobre la colección y se selecciona la opción `ADD DATA` ---> `Insert document` (calculará el ObjectId y se debe agregar luego de la llave } las claves y valores.
++ _Inserción de un documento json_: Se posiciona sobre la colección y se selecciona la opción `ADD DATA` ---> `Insert document` incorporará automáticamente el ObjectId y se debe agregar luego de la llave } las claves y valores.
 
 + _Inserción masiva_: Se debe posicionar sobre la colección, y dar click en `Import`, luego seleccionar el archivo tipo json y se efectua automáticamente a través de interface, sin intervención de compandos.
 
