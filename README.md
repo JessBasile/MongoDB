@@ -77,6 +77,7 @@ Cada respuesta tiene un significado específico justificado a continuación:
 + `local:` Es una base de datos interna utilizada por MongoDB para almacenar información sobre el estado del clúster y el registro de operaciones.
 
 Finalmente la cuenta de MongoDB Atlas quedó exitosamente creada, y vinculada a MongoDBShell para comenzar a trabajar :computer:
+
 A continuación se muestra la base de datos citibike con datos de geolocalización, que permite observar la generación del schema con el mapa y sus puntos de ubicación. Para acceder a ella desde MongoAtlas previamente se utilizó la conexión:
 ```sql
 AGREGAR
