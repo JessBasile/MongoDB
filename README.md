@@ -163,7 +163,7 @@ db.mycoleccion.updateMany({nombre: "Juan"},{$set:{edad: 25}},{upsert: true})
 ```
 En conclusión, con la utilización del comando upsert, ***la base de datos va a cambiar ya sea por actualización o por insersión.***
 
-`Importante:` En caso de colocar el filtro y ***utilizar solo las llaves sin ninguna clave `{“”}` se modificarán todas las claves y valores de todos los documentos, y si ese valor no existe en un documento lo incorporará.***
+`Importante:` En caso de colocar el filtro y ***utilizar solo las llaves sin ninguna clave `{}` se modificarán todas las claves y valores de todos los documentos, y si ese valor no existe en un documento lo incorporará.***
 
 + _Eliminación de un registro_: Solo se elimina el primer registro que cumpla con las características del filtro, si existen más registros con las mismas condiciones no serán adulterados puesto que el comando es **One**. 
 ```sql
