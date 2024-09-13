@@ -46,6 +46,11 @@ MongoDB Atlas es un servicio de bases de datos en la nube administrado por Mongo
 [MongoAtlas](https://www.mongodb.com/es/lp/cloud/atlas/try4?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_core_retarget-brand_gic-null_amers-all_ps-all_desktop_eng_lead&utm_term=mongo%20atlas&utm_medium=cpc_paid_search&utm_ad=p&utm_ad_campaign_id=14412646314&adgroup=131761122132&cq_cmp=14412646314&gad_source=1&gclid=CjwKCAjwodC2BhAHEiwAE67hJDRfjxYun1nUkhWok21s13G5QVpJ9HkoLSYmb_tT6p_lxIFeXE1SuhoCBHMQAvD_BwE?utm_source=google&utm_campaign=search_gs_pl_evergreen_atlas_core_retarget-brand_gic-null_amers-all_ps-all_desktop_eng_lead&utm_term=mongo%20atlas&utm_medium=cpc_paid_search&utm_ad=p&utm_ad_campaign_id=14412646314&adgroup=131761122132&cq_cmp=14412646314&gad_source=1&gclid=CjwKCAjwodC2BhAHEiwAE67hJDRfjxYun1nUkhWok21s13G5QVpJ9HkoLSYmb_tT6p_lxIFeXE1SuhoCBHMQAvD_BwE)
 
 <img align="right" alt="Mundo girando" width="300" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mundo_girando.gif">
+A continuación se muestra la base de datos citibike con datos de geolocalización, que permite observar la generación del schema con el mapa y sus puntos de ubicación. Para acceder a ella desde MongoAtlas previamente se utilizó la conexión:
+```sql
+AGREGAR
+```
+AGREGAR GIFF de VIDEO.
 
 Una de las características más interesantes de MongoDB Altas es su capacidad de gestionar y visualizar datos geoespaciales a través del schema. Esto permite representar ubicaciones geográficas y distribuciones espaciales de manera intuitiva. La plataforma facilita la creación de índices geoespaciales, que optimizan las consultas sobre datos de ubicación y permiten realizar búsquedas de proximidad o encontrar puntos dentro de áreas específicas.
 Atlas no solo simplifica la administración de datos geoespaciales, sino que también proporciona herramientas visuales para representar estos datos en mapas interactivos. Puede observarse cómo se distribuyen las ubicaciones en un mapa, identificar patrones espaciales y tomar decisiones basadas en la visualización geográfica.
