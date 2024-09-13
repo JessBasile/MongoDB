@@ -206,7 +206,7 @@ db.mycoleccion.deleteMany({$and:[{nombre: "Juan"},{edad: 25}]})
 
 ## { Importación en MongoDB }
 
-En el caso de MongoDB la importación puede efectuarse desde interface de Monogo Compass o desde terminal cmd. No existe alternativa desde MongoDB Shell.
+En el caso de MongoDB la importación puede efectuarse desde interface de Mongo Compass o desde terminal cmd. No existe alternativa desde MongoDB Shell.
 
 + _Caso Especial: Importación desde línea de comandos para archivos csv_ : Este tipo de operaciones deben efectuarse desde terminal de Windows `cmd`, dado que MongoShell no la admite, y el comando utilizado para tal fin es:
 ```sql
