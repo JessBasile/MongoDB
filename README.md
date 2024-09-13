@@ -88,10 +88,10 @@ Por consiguiente, una colección puede contener muchos documentos. Cada document
 
 El primer comando en MongoDB Shell que se suele utilizar es `db.help` que proporciona información sobre las funciones básicas que se pueden utilizar dentro de la base de datos en la que se encuentra posicionado a la hora de ejecutar el comando.
 
-Con `show dbs` o `show databases` se pueden observar todas las bases de datos que posee el motor de Mongo en el momento de la consulta. Otra alternativa que proporciona un detalle con mayor información en un formato de estructura json es: `db.adminCommand({ listDatabases: 1 })`
+Con `show dbs` o `show databases` se pueden observar todas las bases de datos que posee el motor de Mongo en el momento de la consulta. Otra alternativa que proporciona un detalle con mayor información en un formato de estructura json es: `db.adminCommand({listDatabases: 1})`
 
-Para ubicarse dentro de una base de datos específica en MongoDB Shell se realiza utilizando el comando `use nombre_base_de_datos` y aparecerá en terminal el nombre de la base.
-En caso de ubicarnos dentro de una base de datos, y desconocer de cuál se trata, puede utilizarse el comando `db` y proporcionará la información del nombre de la base de datos en la que estamos posicionados.
+Para ubicarse dentro de una base de datos específica en MongoDB Shell se realiza utilizando el comando `use nombre_base_de_datos` y aparecerá en terminal Shell el nombre de la base.
+En caso de ubicarnos dentro de una base de datos y desconocer de cuál se trata, puede utilizarse el comando `db` y proporcionará la información del nombre de la base de datos en la que estamos posicionados.
 
 El comando `db.stats()` muestra una estadística de la base de datos en la que nos encontramos alojados, la cantidad de colecciones, los tipos de datos, cantidad de objetos, índices, tamaño, etc.
 
@@ -101,11 +101,15 @@ Para ver las colecciones que conforman la BD se ejecuta el comando `show collect
 
 Si se desea renombrar una colección en particular sobre una base de datos determinadas el comando que se utiliza es: `db["my collection"].renameCollection("myNewCollection")` otra alternativa es: `db.myCollection.renameCollection("myNewCollection")` siempre y cuando el nombre de la colección no tenga espacios, lo cual no es recomendable.
 
-Para crear una colección el comando es: `db.createCollection("nombre")` siempre situado anteriormente en la base de datos que deseo crear esa nueva colección.
-
 ## { Operaciones CRUD dentro de MondoDB Shell }
 
-+ _Inserción de un documento individual_: Es utilizado para insertar documentos en la colección indicada.
++ _Creación de base de datos y colecciónes_: En el caso de MongoDB no se crea una base de datos sola, su incorporación se concreta cuando se crea al menos una colección. Para ello, primero se indica el uso de la base de datos con el nombre que se le desea asignar (aunque no exista), y posteriormente, al crear una colección, el motor incorpora ambas en simultáneo: la base de datos y dentro su colección, ejemplo de su implementación:
+```sql
+use nombre_base_de_datos                  //comando para indicar el nombre de la base de datos
+db.createCollection("nombre_coleccion")   //creación de una colección, previamente situados en la base de datos
+```
+
++ _Inserción manual de un documento individual_: Es utilizado para insertar documentos en la colección indicada.
 ```sql
 db.mycoleccion.insertOne({"nombre": "Juan","edad": 32,"activo":true,"fecha": ISODate("2024-08-26T19:49:25.197Z")})
 ```
@@ -116,7 +120,7 @@ La típica respuesta exitosa seria:
 ```
 La cual indica el N° de ObjectId generado. 
 
-+ _Inserción masiva_: 
++ _Inserción manual de múltiples documentos_: 
 ```sql
 db.mycoleccion.insertMany([{nombre:"Juan", edad: 31,activo:true},{nombre:"Sofia",edad:24},{nombre:"Luis"},{ _id: 1,nombre:"Lusy",edad:50}])
 ```
@@ -125,6 +129,15 @@ En ese caso los corchetes `[]` indican que se trabaja con un arreglo de document
 db.mycoleccion.find().pretty() //que muestra todos los documentos de una colección
 ```
 En ese ejemplo la colección es educacionit y sus documentos son Jess, Juan, etc. con sus correspondientes claves/valor.
+
++ _Lectura de documentos en una colección_: En MongoDB no existe SELECT como en SQL, sino `find` que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
+```sql
+db.mycoleccion.find()
+```
++ _Lectura con condiciones y comentarios_: El operador `$comment` se utiliza para agregar comentarios a una consulta en MongoDB que no afecta los resultados de la misma. Se suele utilizar para luego rastrear las consultas efectuadas y su finalidad (auditoria).
+```sql
+db.mycoleccion.find({“nombre”:”Juan”}, $comment: “Buscar documentos con el nombre “Juan”})
+```
 
 + _Modificación/Actualización individual de un solo documento_: Se realiza utilizando un filtro (lo que sería where en SQL). Para un solo dato, en esta caso la edad cuando el nombre sea Juan:
 ```sql
@@ -157,6 +170,7 @@ db.collection.updateMany(
   { $set: {edad: 35} }          // Actualización
 )
 ```
+
 + _Caso especial de modificación/actualización con potencial inserción_: En el caso que se desee modificar un registro que cumpla con ciertos filtros, pero ningún documento que compone la colección cumpla con esas caracteristicas, podrá ser incorporado si en la línea de comando se incluye la sintaxis “upsert:true” que insertará si no logra encontrar coincidencias, y generará un nuevo ObjectId.
 ```sql
 db.mycoleccion.updateMany({nombre: "Juan"},{$set:{edad: 25}},{upsert: true})
@@ -178,30 +192,26 @@ db.mycoleccion.deleteOne({$and:[{nombre: "Juan"},{edad: 25}]})
 db.mycoleccion.deleteMany({$and:[{nombre: "Juan"},{edad: 25}]})
 ```
 
-+ _Lectura de documentos en una colección_: En MongoDB no existe SELECT como en SQL, sino `find` que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
-```sql
-db.mycoleccion.find()
-```
-+ _Lectura con condiciones y comentarios_: El operador `$comment` se utiliza para agregar comentarios a una consulta en MongoDB que no afecta los resultados de la misma. Se suele utilizar para luego rastrear las consultas efectuadas y su finalidad (auditoria).
-```sql
-db.mycoleccion.find({“nombre”:”Juan”}, $comment: “Buscar documentos con el nombre “Juan”})
-```
-
-+ _Caso Especial: Importación desde línea de comandos para archivos csv_ : Este tipo de operaciones deben efectuarse desde terminal de Windows `cmd`, dado que MongoShell no la admite, y el comando utilizado para tal fin es:
-```sql
-mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --type csv --headerline --file "C:\ruta\clientes.csv"
-```
-
 ## { Operaciones CRUD desde MondoDB Compass }
+
++ _Creación de base de datos y colecciones_: Desde MongoDB Compass se puede efectuar la creación de una base de datos en la opción `Create Database` especificando el nombre de la base de datos y de la colección, y confirmando la misma. Una vez creada la base de datos con una o más colecciones, se puede agregar nuevas haciendo click sobre la base de datos, y seleccionando la opción `Create Collection` y especificando el nombre de la nueva colección.
 
 + _Inserción de un documento json_: Se posiciona sobre la colección y se selecciona la opción `ADD DATA` ---> `Insert document` incorporará automáticamente el ObjectId y se debe agregar luego de la llave } las claves y valores.
 
-+ _Inserción masiva_: Se debe posicionar sobre la colección, y dar click en `Import`, luego seleccionar el archivo tipo json y se efectua automáticamente a través de interface, sin intervención de compandos.
-
-+ _Inserción/Importación de un documento csv_: Opera igual que el caso de json, se deberán posicionar sobre la colección que se desea importar datos, se da click en `Import`, se pueden moficar los tipos de datos, y efectuar la importación.
++ _Lectura de documentos en una colección_: Debe abrirse la colección, en la que puede escrolearse y observar visualmente su composición si efectuar ningún comando. Asimismo, en la parte superior derecha existe un bontón `find` que permite aplicar determinados criterios para consultar documentos.
 
 + _Modificación/Actualización individual de un solo documento_: Se debe posicionar sobre el documento a modificar, se da click sobre el lapiz, y se activa el modo edición habilitándose en la derecha la información de los tipos de datos. Se puede posicionar directo sobre el valor que se desea modificar, se borra y reemplaza por el dato que se requiere, siempre concluyendo la operación clickeando en `Update` a la derecha inferior.
 
 + _Eliminación de un registro_: Sobre el documento que se desea elimninar, se deberá hacer click en cesto de residuos que figura en la parte superior derecha, y se confirma.
 
-+ _Lectura de documentos en una colección_: Debe abrirse la colección, en la que puede escrolearse y observar visualmente su composición si efectuar ningún comando. Asimismo, en la parte superior derecha existe un bontón `find` que permite aplicar determinados criterios para consultar documentos.
+## { Importación en MongoDB }
+
+En el caso de MongoDB la importación puede efectuarse desde interface de Monogo Compass o desde terminal cmd. No existe alternativa desde MongoDB Shell.
+
++ _Caso Especial: Importación desde línea de comandos para archivos csv_ : Este tipo de operaciones deben efectuarse desde terminal de Windows `cmd`, dado que MongoShell no la admite, y el comando utilizado para tal fin es:
+```sql
+mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --type csv --headerline --file "C:\ruta\clientes.csv"
+```
++ _Importación desde interface MongoDB Compass_: Se debe posicionar sobre la colección, y dar click en `Import`, luego seleccionar el archivo tipo json y se efectua automáticamente a través de interface, sin intervención de compandos.
+
++ _Importación de un documento csv desde interface MongoDB Compass_: Opera igual que el caso de json, se deberán posicionar sobre la colección que se desea importar datos, se da click en `Import`, se pueden moficar los tipos de datos, y efectuar la importación.
