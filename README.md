@@ -83,7 +83,7 @@ A continuación se muestra la base de datos citibike con documentos que incluyen
 mongosh "mongodb+srv://m001-student:m001-mongodb-basics@cluster0-jxeqq.mongodb.net/test?authMechanism=DEFAULT"
 ```
 
-<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/variables_entorno.png" alt="Variables de Entorno">
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/MongoDB-Atlas-Geolocalizacion.gif" alt="MongoAtlas-Mapa">
 
 ## { Consideraciones importantes en MongoDB }
 
