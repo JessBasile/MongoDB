@@ -78,11 +78,12 @@ Cada respuesta tiene un significado específico justificado a continuación:
 
 Finalmente la cuenta de MongoDB Atlas quedó exitosamente creada, y vinculada a MongoDBShell para comenzar a trabajar :computer:
 
-A continuación se muestra la base de datos citibike con datos de geolocalización, que permite observar la generación del schema con el mapa y sus puntos de ubicación. Para acceder a ella desde MongoAtlas previamente se utilizó la conexión:
+A continuación se muestra la base de datos citibike con documentos que incluyen campos de geolocalización, y a través del schema pueden visualizarse el mapa y sus puntos de ubicación. Para acceder a ella desde MongoAtlas previamente se utilizó la URI que se detalla a continuación efectuando su conexión a través de MongoDB Compass:
 ```sql
-AGREGAR
+mongosh "mongodb+srv://m001-student:m001-mongodb-basics@cluster0-jxeqq.mongodb.net/test?authMechanism=DEFAULT"
 ```
-AGREGAR GIFF de VIDEO.
+
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/variables_entorno.png" alt="Variables de Entorno">
 
 ## { Consideraciones importantes en MongoDB }
 
