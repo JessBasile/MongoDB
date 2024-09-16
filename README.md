@@ -61,7 +61,7 @@ mongosh "mongodb+srv://JessBasile:contraseña@reportcluster.f0vgx.mongodb.net/?r
 ```
 `Aclaración:`En este caso todavía no se hace a través de Node.js debido a que no se instaló el software en el ordenador.
 
-La respuesta es exitosa cuando prporciona el log ID, las credenciales de conexión y las versiones de MongoDB y Mongosh. Luego puede "testearse" esa conexión exitosa utilizando los comandos:
+La respuesta es exitosa cuando proporciona el log ID, las credenciales de conexión y las versiones de MongoDB y Mongosh. Luego puede "testearse" esa conexión exitosa utilizando los comandos:
 ```sql
 show dbs
 ```
@@ -136,7 +136,7 @@ En ese caso los corchetes `[]` indican que se trabaja con un arreglo de document
 ```sql
 db.mycoleccion.find().pretty() //que muestra todos los documentos de una colección
 ```
-En ese ejemplo la colección es educacionit y sus documentos son Jess, Juan, etc. con sus correspondientes claves/valor.
+En ese ejemplo la base de datos es educacionit, su colección mycoleccion y sus documentos son Juan, Sofía, Luis, etc. con sus correspondientes claves/valor. En el ùltimo registro que se incorpora, se asigna una _id determinado, por lo tanto, todos os registros anteriores tendrán ObjectId y Lusy será la única con un _id diferente Nº 1.
 
 + _Lectura de documentos en una colección_: En MongoDB no existe SELECT como en SQL, sino `find` que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
 ```sql
