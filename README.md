@@ -136,7 +136,7 @@ En ese caso los corchetes `[]` indican que se trabaja con un arreglo de document
 ```sql
 db.mycoleccion.find().pretty() //que muestra todos los documentos de una colección
 ```
-En ese ejemplo la base de datos es educacionit, su colección mycoleccion y sus documentos son Juan, Sofía, Luis, etc. con sus correspondientes claves/valor. En el ùltimo registro que se incorpora, se asigna una _id determinado, por lo tanto, todos os registros anteriores tendrán ObjectId y Lusy será la única con un _id diferente Nº 1.
+En ese ejemplo la base de datos es "educacionit", su colección "mycoleccion" y sus documentos son "Juan", "Sofía", "Luis", etc. con sus correspondientes claves/valor. En el último registro incorporado, se asigna un _id determinado, por lo tanto, todos los registros anteriores tendrán ObjectId y Lusy será la única con un _id diferente Nº 1.
 
 + _Lectura de documentos en una colección_: En MongoDB no existe SELECT como en SQL, sino `find` que sirve para consultar los documentos que componen una colección, ejemplo de su utilización:
 ```sql
