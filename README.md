@@ -109,7 +109,7 @@ Para ver las colecciones que conforman la BD se ejecuta el comando `show collect
 
 Si se desea renombrar una colección en particular sobre una base de datos determinadas el comando que se utiliza es: `db["my collection"].renameCollection("myNewCollection")` otra alternativa es: `db.myCollection.renameCollection("myNewCollection")` siempre y cuando el nombre de la colección no tenga espacios, lo cual no es recomendable.
 
-## { Operaciones CRUD dentro de MondoDB Shell }
+## { Operaciones CRUD dentro de MongoDB Shell }
 
 + _Creación de base de datos y colecciónes_: En el caso de MongoDB no se crea una base de datos sola, su incorporación se concreta cuando se crea al menos una colección. Para ello, primero se indica el uso de la base de datos con el nombre que se le desea asignar (aunque no exista), y posteriormente, al crear una colección, el motor incorpora ambas en simultáneo: la base de datos y dentro su colección, ejemplo de su implementación:
 ```sql
