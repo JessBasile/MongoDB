@@ -8,13 +8,8 @@ else
     exit 1
 fi
 
-# Print environment variables for debugging
-echo "MONGO_INITDB_ROOT_USERNAME=$MONGO_INITDB_ROOT_USERNAME"
-echo "MONGO_INITDB_ROOT_PASSWORD=$MONGO_INITDB_ROOT_PASSWORD"
-
 # Wait until MongoDB is ready
-until docker exec mongodb mongosh --username $MONGO_INITDB_ROOT_USERNAME --password $MONGO_INITDB_ROOT_PASSWORD --authenticationDatabase admin --eval "db.runCommand('ping')"
-do
+until docker exec -it mongodb mongo --username "$MONGO_INITDB_ROOT_USERNAME" --password "$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --eval "db.runCommand({ ping: 1 })" >/dev/null 2>&1; do
     echo "Waiting for MongoDB to be ready..."
     sleep 2
 done
