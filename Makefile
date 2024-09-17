@@ -49,6 +49,7 @@ down:
 
 backup:
 	@echo "Creating backup of MongoDB"
+	docker exec -it $(SERVICE_NAME) /bin/bash -c "mkdir -p /data/backup/"
 	docker exec -it $(SERVICE_NAME) mongodump --username $(USER) --password $(PASSWORD) --authenticationDatabase admin --db $(DATABASE) --out /data/backup/
 	docker cp $(SERVICE_NAME):/data/backup ./mongo_project/dump/
 
