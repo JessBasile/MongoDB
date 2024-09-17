@@ -34,7 +34,10 @@ up:
 
 test-db:
 	@echo "Testing the collections in the database"
-	docker exec -it $(SERVICE_NAME) mongo --eval "db.getCollectionNames()"
+	docker exec -it $(SERVICE_NAME) mongosh --quiet --eval "db.getCollectionNames()" $(DATABASE)
+
+	@echo "Counting documents in each collection"
+	docker exec -it $(SERVICE_NAME) mongosh --quiet --eval 'db.getCollectionNames().forEach(function(c) { print(c + ": " + db[c].countDocuments() + " documents"); });' $(DATABASE)
 
 access-db:
 	@echo "Accessing MongoDB shell"
