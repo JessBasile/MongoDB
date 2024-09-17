@@ -49,11 +49,11 @@ down:
 
 backup:
 	@echo "Creating backup of MongoDB"
-	docker exec -it $(SERVICE_NAME) mongodump --db $(DATABASE) --out /data/backup/
+	docker exec -it $(SERVICE_NAME) mongodump --username $(USER) --password $(PASSWORD) --authenticationDatabase admin --db $(DATABASE) --out /data/backup/
 	docker cp $(SERVICE_NAME):/data/backup ./mongo_project/dump/
 
 export:
 	@echo "Exporting collections to JSON files"
 	@for file in $(FILES); do \
-	    docker exec -it $(SERVICE_NAME) mongoexport --db $(DATABASE) --collection $$file --out ./mongo_project/export_csv/$$file.json --jsonArray; \
+	    docker exec -it $(SERVICE_NAME) mongoexport --username $(USER) --password $(PASSWORD) --authenticationDatabase admin --db $(DATABASE) --collection $$file --out ./mongo_project/export_csv/$$file.json --jsonArray; \
 	done
