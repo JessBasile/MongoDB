@@ -6,9 +6,9 @@ services:
     image: mongo:latest
     environment:
            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-     # 
-    ports:
-      - "27017:27017"
+           command: --secure-file-priv=/mongo_project
     volumes:
       # - ./mongo_data:/data/db
       - ./mongo_project:/mongo_project
+    ports:
+      - "27017:27017"
