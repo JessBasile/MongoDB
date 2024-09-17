@@ -49,9 +49,9 @@ down:
 
 backup:
 	@echo "Creating backup of MongoDB"
-	docker exec -it $(SERVICE_NAME) /bin/bash -c "mkdir -p $(BACKUP_DIR)"
-	docker exec -it $(SERVICE_NAME) mongodump --username root --password jess123 --authenticationDatabase admin --db $(DATABASE) --archive=$(BACKUP_DIR)/$(BACKUP_FILE)
-	docker cp $(SERVICE_NAME):$(BACKUP_DIR)/$(BACKUP_FILE) $(HOST_BACKUP_DIR)/
+	docker exec -it $(SERVICE_NAME) /bin/bash -c "mkdir -p /data/backup/"
+	docker exec -it $(SERVICE_NAME) mongodump --username $(USER) --password $(PASSWORD) --authenticationDatabase admin --db $(DATABASE) --archive=/data/backup/backup.archive
+	docker cp $(SERVICE_NAME):/data/backup/backup.archive ./mongo_project/dump/
 
 export:
 	@echo "Exporting collections to JSON files"
