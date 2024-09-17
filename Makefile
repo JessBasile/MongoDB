@@ -9,8 +9,8 @@ PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
 DATABASE=${MONGO_INITDB_DATABASE}
 
 DOCKER_COMPOSE_FILE=./docker-compose.yml
-DATABASE_CREATION=./mongo_project/database_creation.json
-DATABASE_POPULATION=./mongo_project/population.json
+DATABASE_INIT=./mongo_project/init.js
+DATABASE_POPULATION=./mongo_project/population.js
 
 .PHONY: all up objects test-db access-db down export backup
 
@@ -26,16 +26,11 @@ up:
 	@echo "Waiting for MongoDB to be ready..."
 	bash mongo_wait.sh
 
-	@echo "Creating and populating MongoDB database"
-	docker exec -it $(SERVICE_NAME) mongoimport --db $(DATABASE) --collection myCollection --file $(DATABASE_CREATION) --jsonArray
-	docker exec -it $(SERVICE_NAME) mongoimport --db $(DATABASE) --collection myCollection --file $(DATABASE_POPULATION) --jsonArray
+	@echo "Creating collections in MongoDB database"
+	docker exec -it $(SERVICE_NAME) mongosh --quiet --file $(DATABASE_INIT)
 
-objects:
-	@echo "Inserting objects into the database"
-	@for file in $(FILES); do \
-	    echo "Processing $$file and inserting into the database $(DATABASE)"; \
-	    docker exec -it $(SERVICE_NAME) mongoimport --db $(DATABASE) --collection $$file --file ./mongo_project/objects/$$file.json --jsonArray; \
-	done
+	@echo "Populating MongoDB database"
+	docker exec -it $(SERVICE_NAME) mongosh --quiet --file $(DATABASE_POPULATION)
 
 test-db:
 	@echo "Testing the collections in the database"
