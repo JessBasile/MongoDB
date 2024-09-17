@@ -5,8 +5,9 @@ services:
     container_name: mongodb
     image: mongo:latest
     environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-    command: mongod --auth
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     volumes:
       # Descomenta la línea siguiente si necesitas persistencia de datos
       # - ./mongo_data:/data/db
