@@ -2,6 +2,26 @@
     <img alt="Logo MongoDB GIF" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
 </p>
 
+## { Proyecto MongoDB: Implementación de la base de datos CV_Jesica_Basile }
+
+Se diseñó una base de datos no relacional que contiene el curriculum vitae de la autora hasta la fecha, la cual se ejecuta exitosamente en el motor de MongoDB. El código fue adaptado para interactuar con la base de datos y ejecutar comandos utilizando MongoDB Shell en combinación con JavaScript.
+
+El proceso de ejecución se automatizó mediante la creación de los archivos `Makefile`, `.env`, `docker-compose.yml` y `mongo_wait.sh`, los cuales forman parte de un sistema de automatización y configuración utilizado para el desarrollo y despliegue de la base de datos en el espacio Codespace de GitHub. Este sistema permite la creación de la base de datos junto a sus colecciones, la inserción de datos, así como la realización de pruebas, respaldos y exportación de las colecciones.
+
+Asimismo, se diseñó en el presente README un "paso a paso" sobre el manejo de MongoDB, Mongo Compass, Mongo Shell y Mongo Atlas especificando su utilidad, beneficios y comandos.
+
+## { Comandos para hacer correr el código en Codespace Github: con bash }
+
+Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
+
+•	`make` si te da un error en la conexion al socket, volver al correr el comando.
+•	`make test-db` para observar la cantidad de documentos en cada colección.
+•	`make test-collections` muestra los datos que posee cada documento de cada colección.
+•	`make access-db` para acceder a la base de datos.
+•	`make backup` para realizar un backup de la base de datos, dentro de una carpeta denominada "dump".
+•	`make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo csv, dentro de una carpeta denominada "export_csv".
+•	`make clean-db` limpiar la base de datos.
+
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
 Para iniciar la utilización de MongoDB, fue necesario no solo la instalación del motor de DB, sino de la interfaz Mongo Compass y de MongoSH, éste último para su manejo desde línea de comandos.
