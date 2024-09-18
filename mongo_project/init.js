@@ -1,7 +1,7 @@
 print("Creando colecciones...");
 
-// Define el nombre de la base de datos directamente en el script
-const db = connect("mongodb://localhost:27017/CV_Jesica_Basile");
+// Conecta a la base de datos usando autenticación
+const db = connect("mongodb://root:jess123@localhost:27017/CV_Jesica_Basile");
 
 // Crear colecciones
 db.createCollection("datos_personales");
