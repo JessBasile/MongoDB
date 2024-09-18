@@ -1,11 +1,8 @@
-print("Creando colecciones...");
+print("Creating collections...");
 
-// Conecta a la base de datos usando autenticación
-const db = connect("mongodb://root:jess123@localhost:27017/CV_Jesica_Basile");
-
-// Crear colecciones
+use CV_Jesica_Basile;
 db.createCollection("datos_personales");
-print("Colección 'datos_personales' creada");
+print("Collection 'datos_personales' created");
 
 db.createCollection("experiencia_profesional");
 print("Collection 'experiencia_profesional' created");
