@@ -1,6 +1,3 @@
-print("Creating collections...");
-
-use CV_Jesica_Basile;
 db.createCollection("datos_personales");
 print("Collection 'datos_personales' created");
 
