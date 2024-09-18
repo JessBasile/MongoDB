@@ -244,7 +244,9 @@ mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --ty
 
 + _Importación de un documento csv desde interface MongoDB Compass_: Opera igual que el caso de json, se deberán posicionar sobre la colección que se desea importar datos, se da click en `Import`, se pueden moficar los tipos de datos, y efectuar la importación.
 
-<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/JS-Logo.png" alt="Logo Javascript" width="300">
+<div style="text-align: center;">
+    <img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/JS-Logo.png" alt="Logo Javascript" style="width: 400px; height: auto;">
+</div>
 
 ## Implementación de Javascript en interacción con MongoSH
 
