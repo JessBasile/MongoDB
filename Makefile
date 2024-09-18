@@ -32,10 +32,25 @@ up:
 	@echo "Populating MongoDB database"
 	docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_POPULATION)
 
-
 test-db:
 	@echo "Testing the collections in the database"
 	docker exec -it $(SERVICE_NAME) mongosh --quiet --username $(MONGO_INITDB_ROOT_USERNAME) --password $(MONGO_INITDB_ROOT_PASSWORD) --authenticationDatabase admin --eval "db.getCollectionNames().forEach(function(c) { print('Collection: ' + c); var count = db[c].find({}).count(); print(c + ': ' + count + ' documents'); });" $(MONGO_INITDB_DATABASE)
+
+test-collections:
+	@echo "Showing data for each collection in the MongoDB database"
+	docker exec -it mongodb mongosh "mongodb://root:jess123@localhost:27017/CV_Jesica_Basile?authSource=admin" --quiet --eval "\
+		print('datos_personales:'); \
+		db.datos_personales.find().pretty(); \
+		print('experiencia_profesional:'); \
+		db.experiencia_profesional.find().pretty(); \
+		print('formacion_academica:'); \
+		db.formacion_academica.find().pretty(); \
+		print('certificaciones:'); \
+		db.certificaciones.find().pretty(); \
+		print('formacion_docente:'); \
+		db.formacion_docente.find().pretty(); \
+		print('experiencia_docente:'); \
+		"
 
 access-db:
 	@echo "Accessing MongoDB shell"
