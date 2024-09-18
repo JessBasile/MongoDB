@@ -34,11 +34,7 @@ up:
 
 test-db:
 	@echo "Testing the collections in the database"
-	docker exec -it $(SERVICE_NAME) mongosh --quiet --username $(MONGO_INITDB_ROOT_USERNAME) --password $(MONGO_INITDB_ROOT_PASSWORD) --authenticationDatabase admin --eval 'db.getCollectionNames().forEach(function(c) {
-		print("Collection: " + c);
-		var count = db[c].find({year: 2014}).count(); // Filtro específico
-		print(c + ": " + count + " documents matching the filter {year: 2014}");
-	});' $(MONGO_INITDB_DATABASE)
+	docker exec -it $(SERVICE_NAME) mongosh --quiet --username $(MONGO_INITDB_ROOT_USERNAME) --password $(MONGO_INITDB_ROOT_PASSWORD) --authenticationDatabase admin --eval "db.getCollectionNames().forEach(function(c) { print('Collection: ' + c); var count = db[c].find({}).count(); print(c + ': ' + count + ' documents'); });" $(MONGO_INITDB_DATABASE)
 
 access-db:
 	@echo "Accessing MongoDB shell"
