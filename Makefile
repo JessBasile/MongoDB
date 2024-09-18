@@ -40,17 +40,18 @@ test-collections:
 	@echo "Showing data for each collection in the MongoDB database"
 	docker exec -it mongodb mongosh "mongodb://root:jess123@localhost:27017/CV_Jesica_Basile?authSource=admin" --quiet --eval "\
 		print('datos_personales:'); \
-		db.datos_personales.find().pretty(); \
+		db.datos_personales.find().forEach(printjson); \
 		print('experiencia_profesional:'); \
-		db.experiencia_profesional.find().pretty(); \
+		db.experiencia_profesional.find().forEach(printjson); \
 		print('formacion_academica:'); \
-		db.formacion_academica.find().pretty(); \
+		db.formacion_academica.find().forEach(printjson); \
 		print('certificaciones:'); \
-		db.certificaciones.find().pretty(); \
+		db.certificaciones.find().forEach(printjson); \
 		print('formacion_docente:'); \
-		db.formacion_docente.find().pretty(); \
+		db.formacion_docente.find().forEach(printjson); \
 		print('experiencia_docente:'); \
-		"
+		db.experiencia_docente.find().forEach(printjson); \
+	"
 
 access-db:
 	@echo "Accessing MongoDB shell"
