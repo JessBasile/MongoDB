@@ -2,7 +2,7 @@
     <img alt="Logo MongoDB GIF" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/mongo_db.gif">
 </p>
 
-## { Proyecto MongoDB: Implementación de la base de datos CV_Jesica_Basile }
+## { Proyecto MongoDB: Implementación de la BD CV_Jesica_Basile }
 
 Se diseñó una base de datos no relacional que contiene el curriculum vitae de la autora hasta la fecha, la cual se ejecuta exitosamente en el motor de MongoDB. El código fue adaptado para interactuar con la base de datos y ejecutar comandos utilizando MongoDB Shell en combinación con JavaScript.
 
@@ -14,13 +14,13 @@ Asimismo, se diseñó en el presente README un "paso a paso" sobre el manejo de 
 
 Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 
-•	`make` si te da un error en la conexion al socket, volver al correr el comando.
-•	`make test-db` para observar la cantidad de documentos en cada colección.
-•	`make test-collections` muestra los datos que posee cada documento de cada colección.
-•	`make access-db` para acceder a la base de datos.
-•	`make backup` para realizar un backup de la base de datos, dentro de una carpeta denominada "dump".
-•	`make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo csv, dentro de una carpeta denominada "export_csv".
-•	`make clean-db` limpiar la base de datos.
++ `make` si te da un error en la conexion al socket, volver al correr el comando.
++ `make test-db` para observar la cantidad de documentos en cada colección.
++ `make test-collections` muestra los datos que posee cada documento de cada colección.
++ `make access-db` para acceder a la base de datos.
++ `make backup` para realizar un backup de la base de datos, dentro de una carpeta denominada "dump".
++ `make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo csv, dentro de una carpeta denominada "export_csv".
++ `make clean-db` limpiar la base de datos.
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
