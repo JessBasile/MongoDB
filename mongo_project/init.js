@@ -1,9 +1,11 @@
-print("Creating collections...");
+print("Creando colecciones...");
 
-use CV_Jesica_Basile;
+// Define el nombre de la base de datos directamente en el script
+const db = connect("mongodb://localhost:27017/CV_Jesica_Basile");
 
+// Crear colecciones
 db.createCollection("datos_personales");
-print("Collection 'datos_personales' created");
+print("Colección 'datos_personales' creada");
 
 db.createCollection("experiencia_profesional");
 print("Collection 'experiencia_profesional' created");
