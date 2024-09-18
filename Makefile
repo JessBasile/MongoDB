@@ -70,6 +70,11 @@ backup:
 
 export:
 	@echo "Exporting collections to JSON files"
-	@for file in $(FILES); do \
-	    docker exec -it $(SERVICE_NAME) mongoexport --username $(USER) --password $(PASSWORD) --authenticationDatabase admin --db $(DATABASE) --collection $$file --out ./mongo_project/export_csv/$$file.json --jsonArray; \
-	done
+	docker exec -it mongodb /bin/bash -c "mkdir -p /data/export/"
+	docker exec -it mongodb mongoexport --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --collection datos_personales --out /data/export/datos_personales.json
+	docker exec -it mongodb mongoexport --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --collection experiencia_profesional --out /data/export/experiencia_profesional.json
+	docker exec -it mongodb mongoexport --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --collection formacion_academica --out /data/export/formacion_academica.json
+	docker exec -it mongodb mongoexport --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --collection certificaciones --out /data/export/certificaciones.json
+	docker exec -it mongodb mongoexport --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --collection formacion_docente --out /data/export/formacion_docente.json
+	docker exec -it mongodb mongoexport --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --collection experiencia_docente --out /data/export/experiencia_docente.json
+	docker cp mongodb:/data/export ./mongo_project/
