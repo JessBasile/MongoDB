@@ -20,14 +20,18 @@ info:
 	@echo "This is a project for MongoDB database: $(DATABASE)"
 
 up:
-	@echo "Iniciando servicio MongoDB con Docker..."
+	@echo "Starting MongoDB service with Docker"
 	docker compose -f $(DOCKER_COMPOSE_FILE) up -d --build
-	@echo "Esperando a que MongoDB esté listo..."
+
+	@echo "Waiting for MongoDB to be ready..."
 	bash mongo_wait.sh
-	@echo "Creando colecciones en la base de datos MongoDB..."
+
+	@echo "Creating collections in MongoDB database"
 	docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_INIT)
-	@echo "Poblando la base de datos MongoDB..."
+
+	@echo "Populating MongoDB database"
 	docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_POPULATION)
+
 
 test-db:
 	@echo "Testing the collections in the database"
