@@ -62,10 +62,11 @@ down:
 	docker compose -f $(DOCKER_COMPOSE_FILE) down
 
 backup:
-	@echo "Creating backup of MongoDB"
-	docker exec -it $(SERVICE_NAME) /bin/bash -c "mkdir -p /data/backup/"
-	docker exec -it $(SERVICE_NAME) mongodump --username $(USER) --password $(PASSWORD) --authenticationDatabase admin --db $(DATABASE) --archive=/data/backup/backup.archive
-	docker cp $(SERVICE_NAME):/data/backup/backup.archive ./mongo_project/dump/
+    @echo "Creating backup of MongoDB"
+    docker exec -it mongodb /bin/bash -c "mkdir -p /data/backup/"
+    docker exec -it mongodb mongodump --username root --password jess123 --authenticationDatabase admin --db CV_Jesica_Basile --archive=/data/backup/backup.archive
+    mkdir -p ./mongo_project/dump/
+    docker cp mongodb:/data/backup/backup.archive ./mongo_project/dump/
 
 export:
 	@echo "Exporting collections to JSON files"
