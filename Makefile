@@ -61,6 +61,10 @@ down:
 	@echo "Stopping MongoDB service and removing containers"
 	docker compose -f $(DOCKER_COMPOSE_FILE) down
 
+clean-db:
+	@echo "Dropping the database"
+	docker exec -it $(SERVICE_NAME) mongosh --username $(USER) --password $(PASSWORD) --eval "db.dropDatabase()"
+
 backup:
 	@echo "Creating backup of MongoDB"
 	docker exec -it mongodb /bin/bash -c "mkdir -p /data/backup/"
