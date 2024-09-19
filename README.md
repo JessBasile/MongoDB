@@ -21,7 +21,7 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 + `make backup` para realizar un backup de la base de datos, dentro de una carpeta denominada "dump".
 + `make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo .json, dentro de una carpeta denominada "export".
 + `make clean-db` limpiar la base de datos.
-+ `down` está diseñado para detener el servicio de MongoDB y eliminar los contenedores relacionados usando docker-compose, elimina los contenedores pero no los volúmenes de datos a menos que se especifique, por lo que es seguro usarlo para detener el entorno sin perder datos almacenados en volúmenes.
++ `make down` está diseñado para detener el servicio de MongoDB y eliminar los contenedores relacionados usando docker-compose, elimina los contenedores pero no los volúmenes de datos a menos que se especifique, por lo que es seguro usarlo para detener el entorno sin perder datos almacenados en volúmenes.
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
