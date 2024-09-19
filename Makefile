@@ -54,8 +54,8 @@ test-collections:
 	"
 
 access-db:
-	@echo "Accessing MongoDB shell"
-	docker exec -it $(SERVICE_NAME) mongo --username $(USER) --password $(PASSWORD)
+    @echo "Accessing MongoDB shell"
+    docker exec -it $(SERVICE_NAME) mongosh --username $(USER) --password $(PASSWORD)
 
 down:
 	@echo "Stopping MongoDB service and removing containers"
