@@ -14,12 +14,12 @@ Asimismo, se diseñó en el presente README un "paso a paso" sobre el manejo de 
 
 Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 
-+ `make` si te da un error en la conexion al socket, volver al correr el comando.
++ `make` si da un error en la conexion al socket, volver al correr el comando.
 + `make test-db` para observar la cantidad de documentos en cada colección.
 + `make test-collections` muestra los datos que posee cada documento de cada colección.
 + `make access-db` para acceder a la base de datos.
 + `make backup` para realizar un backup de la base de datos, dentro de una carpeta denominada "dump".
-+ `make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo csv, dentro de una carpeta denominada "export_csv".
++ `make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo .json, dentro de una carpeta denominada "export".
 + `make clean-db` limpiar la base de datos.
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
