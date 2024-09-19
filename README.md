@@ -4,7 +4,7 @@
 
 ## { Proyecto MongoDB: Implementación de la BD CV_Jesica_Basile }
 
-Se diseñó una base de datos no relacional que contiene el [curriculum vitae](CV_MongoDB.pdf) de la autora hasta la fecha, la cual se ejecuta exitosamente en el motor de MongoDB. El código fue adaptado para interactuar con la base de datos y hacer correr comandos utilizandos con MongoDB Shell en combinación con JavaScript.
+Se diseñó una base de datos no relacional que contiene el [curriculum vitae](CV-MongoDB.pdf) de la autora hasta la fecha, la cual se ejecuta exitosamente en el motor de MongoDB. El código fue adaptado para interactuar con la base de datos y hacer correr comandos utilizandos con MongoDB Shell en combinación con JavaScript.
 
 El proceso de ejecución se automatizó mediante la creación de los archivos `Makefile`, `.env`, `docker-compose.yml` y `mongo_wait.sh`, los cuales forman parte de un sistema de automatización y configuración utilizado para el desarrollo y despliegue de la base de datos en el espacio Codespace de GitHub. Este sistema permite la creación de la base de datos junto a sus colecciones, la inserción de datos, así como la realización de pruebas, respaldos y exportación de las colecciones.
 
