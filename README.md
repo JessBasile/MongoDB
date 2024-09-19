@@ -248,3 +248,4 @@ mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --ty
 
 ## Implementación de Javascript en interacción con MongoSH
 
+Se decide operar con Visual Studio Code desde terminal para Javascript y se conecta a MongoDB Shell con el comando  `mongosh`. Desde la terminal de Mongo Shell también pueden ejecutarse comandos de Javascript dado que es interprete de ese lenguaje de programación.
