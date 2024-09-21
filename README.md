@@ -159,6 +159,8 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 
 `Bonus Track:` A continuación se adjunta una captura con el listado completo que en la actualidad muestra MondoDB Compass, cuando se accede al modo "edición" (click en el lápiz de un dato del documento), donde posteriormente permite desplegar todos los tipos de datos posbibles por lo que se puede cambiar.
 
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/tipos_de_datosmdb.png" alt="Tipos-dato-MongoDB">
+
 ## { Tipos de dato MongoDB vs Tipos de dato SQL } 
 
 | Tipo de Dato en MongoDB    | Equivalente en SQL      | Descripción                                                 |
