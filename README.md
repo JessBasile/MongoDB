@@ -157,6 +157,27 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 
 `Aclaración Importante:` En el caso del ObejectId, se trata de una cadena hexadecimal de 12 bytes, que contienen información sobre la fecha de creación del documento (4 bytes), el identificador del servidor (5 bytes) y un contrador incremental (3 bytes). Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
 
+## { Tipos de dato MongoDB vs Tipos de dato SQL } 
+
+| Tipo de Dato en MongoDB    | Equivalente en SQL      | Descripción                                                 |
+|----------------------------|------------------------|-------------------------------------------------------------|
+| **String**                 | VARCHAR, TEXT           | Almacena cadenas de texto.                                   |
+| **Number**                 | INT, BIGINT, FLOAT      | Almacena números enteros o decimales.                        |
+| **Double**                 | DOUBLE, FLOAT           | Almacena números de punto flotante.                          |
+| **Int32**                  | INT                    | Almacena enteros de 32 bits.                                 |
+| **Int64**                  | BIGINT                 | Almacena enteros de 64 bits.                                 |
+| **Boolean**                | BOOLEAN                | Almacena valores de verdad (`true` o `false`).               |
+| **Date**                   | DATE, DATETIME          | Almacena fechas y horas.                                     |
+| **Array**                  | No equivalente directo | Almacena listas de valores, similar a una tabla de valores.  |
+| **Object**                 | No equivalente directo | Almacena documentos anidados (similar a JSON en SQL).        |
+| **ObjectId**               | PRIMARY KEY (AUTO_INCREMENT) | Almacena identificadores únicos, generados automáticamente. |
+| **Binary Data**            | BLOB, BYTEA             | Almacena datos binarios, como imágenes o archivos.           |
+| **Decimal128**             | DECIMAL, NUMERIC        | Almacena números decimales de alta precisión.                |
+| **Null**                   | NULL                   | Representa un valor nulo o no asignado.                      |
+| **Timestamp**              | TIMESTAMP               | Almacena un valor de tiempo con precisión adicional.         |
+| **Regular Expression**     | No equivalente directo  | Almacena patrones para búsquedas textuales avanzadas.        |
+| **Geolocalización/GeoJSON**| No equivalente directo  | Almacena coordenadas geográficas en formato GeoJSON.         |
+
 ## { Operaciones CRUD dentro de MongoDB Shell }
 
 + _Creación de base de datos y colecciónes_: En el caso de MongoDB no se crea una base de datos sola, su incorporación se concreta cuando se crea al menos una colección. Para ello, primero se indica el uso de la base de datos con el nombre que se le desea asignar (aunque no exista), y posteriormente, al crear una colección, el motor incorpora ambas en simultáneo: la base de datos y dentro su colección, ejemplo de su implementación:
