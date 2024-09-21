@@ -130,6 +130,32 @@ Para ver las colecciones que conforman la BD se ejecuta el comando `show collect
 
 Si se desea renombrar una colección en particular sobre una base de datos determinadas el comando que se utiliza es: `db["my collection"].renameCollection("myNewCollection")` otra alternativa es: `db.myCollection.renameCollection("myNewCollection")` siempre y cuando el nombre de la colección no tenga espacios, lo cual no es recomendable.
 
+## { Tipos de datos en MongoDB }
+
+# Tipos de Datos en MongoDB
+
+| Tipo de Dato              | Utilidad                                                      | Ejemplo de Uso                          | Comentario                                                                 |
+|---------------------------|---------------------------------------------------------------|-----------------------------------------|---------------------------------------------------------------------------|
+| **_id**                   | Identificador único por documento.                            | `"_id": ObjectId("507f191e810c19729de860ea")` | Cada documento debe tener un campo `_id`. Puede ser generado automáticamente o definido manualmente. |
+| **String**                | Almacena texto o cadenas de caracteres.                        | `"nombre": "Jesica Basile"`             | Siempre se encierra entre comillas dobles.                                 |
+| **Number**                | Almacena valores numéricos, ya sean enteros o decimales.       | `"edad": 30`                            | Puede ser `int`, `long`, `double`, dependiendo del valor numérico.         |
+| **Float**                 | Almacena números de punto flotante (decimales).                | `"precio": 19.99`                       | Usado para cálculos que requieren números decimales.                       |
+| **Int**                   | Almacena valores numéricos enteros.                            | `"cantidad": 100`                       | Útil cuando se trabaja con números sin decimales.                          |
+| **Boolean**               | Almacena valores de verdad (true/false).                       | `"es_activo": true`                     | Representa banderas lógicas, como estados o condiciones.                   |
+| **Array**                 | Almacena listas de elementos, que pueden ser de cualquier tipo.| `"cursos": ["MongoDB", "SQL", "Excel"]` | Útil para almacenar conjuntos de datos relacionados.                       |
+| **Object**                | Almacena documentos incrustados, es decir, objetos anidados.   | `"direccion": {"ciudad": "Buenos Aires", "pais": "Argentina"}` | Se usa para modelar estructuras más complejas en un solo campo.            |
+| **ObjectId**              | Almacena un identificador único para cada documento.           | `"id": ObjectId("507f191e810c19729de860ea")` | MongoDB genera automáticamente un `ObjectId` único por defecto.            |
+| **Date**                  | Almacena fechas en un formato de tiempo (timestamp).           | `"fecha_creacion": ISODate("2022-09-18T10:00:00Z")` | Útil para almacenar fechas y horas con precisión en formato ISO 8601.      |
+| **ISODate**               | Variante específica del tipo `Date`, en formato ISO 8601.      | `"fecha_nacimiento": ISODate("1990-12-01T00:00:00Z")` | Se usa para manejar fechas estandarizadas internacionalmente.              |
+| **Null**                  | Representa un valor nulo o inexistente.                        | `"observaciones": null`                 | Se usa cuando un campo no tiene valor asignado.                            |
+| **Binary Data**           | Almacena datos binarios, como imágenes o archivos.             | `"archivo": BinData(0, "aGVsbG8gd29ybGQ=")` | Ideal para almacenar contenido binario como imágenes, videos, etc.         |
+| **Decimal128**            | Almacena números de punto flotante de alta precisión.          | `"precio": NumberDecimal("19.99")`      | Útil para cálculos financieros donde la precisión es crítica.              |
+| **Regular Expression**    | Almacena expresiones regulares para búsquedas avanzadas.       | `db.productos.find({nombre: {$regex: /camiseta/i}})` | Útil para buscar patrones en cadenas de texto.                             |
+| **Geolocalización/GeoJSON** | Almacena datos de ubicación geográfica en formato GeoJSON.    | `"ubicacion": {"type": "Point", "coordinates": [-69.8983, 18.4725]}` | Se utiliza para almacenar coordenadas geográficas (latitud/longitud).      |
+| **Timestamp**             | Almacena valores de tiempo con una resolución mayor que `Date`.| `"registro": Timestamp(1630001234, 1)`  | Usado internamente por MongoDB para operaciones de replicación.            |
+| **MinKey**                | Valor especial para comparar valores menores que cualquier otro.| `"clave_min": MinKey()`                | Usado en operaciones de ordenación.                                        |
+| **MaxKey**                | Valor especial para comparar valores mayores que cualquier otro.| `"clave_max": MaxKey()`                | Usado en operaciones de ordenación.                                        |
+
 ## { Operaciones CRUD dentro de MongoDB Shell }
 
 + _Creación de base de datos y colecciónes_: En el caso de MongoDB no se crea una base de datos sola, su incorporación se concreta cuando se crea al menos una colección. Para ello, primero se indica el uso de la base de datos con el nombre que se le desea asignar (aunque no exista), y posteriormente, al crear una colección, el motor incorpora ambas en simultáneo: la base de datos y dentro su colección, ejemplo de su implementación:
