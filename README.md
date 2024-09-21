@@ -157,6 +157,8 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 
 `Aclaración Importante:` En el caso del ObejectId, se trata de una cadena hexadecimal de 12 bytes, que contienen información sobre la fecha de creación del documento (4 bytes), el identificador del servidor (5 bytes) y un contrador incremental (3 bytes). Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
 
+`Bonus Track:` A continuación se adjunta una captura con el listado completo que en la actualidad muestra MondoDB Compass, cuando se accede al modo "edición" (click en el lápiz de un dato del documento), donde posteriormente permite desplegar todos los tipos de datos posbibles por lo que se puede cambiar.
+
 ## { Tipos de dato MongoDB vs Tipos de dato SQL } 
 
 | Tipo de Dato en MongoDB    | Equivalente en SQL      | Descripción                                                 |
