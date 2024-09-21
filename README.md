@@ -111,7 +111,7 @@ mongosh "mongodb+srv://m001-student:m001-mongodb-basics@cluster0-jxeqq.mongodb.n
 + Una colección es un conjunto de documentos, similar a una tabla en una base de datos relacional.
 + Un documento es un registro individual en una colección, similar a una fila en una tabla relacional.
 Por consiguiente, una colección puede contener muchos documentos. Cada documento puede tener una estructura diferente, aunque generalmente se sigue una estructura común dentro de una colección para mantener la coherencia de los datos.
-+ Siempre que se inserten datos en un documentos, MongoDB asignará un ObjetcId, es una cadena hexadecimal de 12 bytes, que contiene información como la fecha de creación del documento, el identificador del servidor, entre otros. Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
++ Siempre que se inserten datos en un documentos, MongoDB asignará un ObjetcId.
 
 ## { Primeros comandos en MongoDB Shell }
 
@@ -132,7 +132,6 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 
 ## { Tipos de datos en MongoDB }
 
-# Tipos de Datos en MongoDB
 
 | Tipo de Dato              | Utilidad                                                      | Ejemplo de Uso                          | Comentario                                                                 |
 |---------------------------|---------------------------------------------------------------|-----------------------------------------|---------------------------------------------------------------------------|
@@ -155,6 +154,8 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 | **Timestamp**             | Almacena valores de tiempo con una resolución mayor que `Date`.| `"registro": Timestamp(1630001234, 1)`  | Usado internamente por MongoDB para operaciones de replicación.            |
 | **MinKey**                | Valor especial para comparar valores menores que cualquier otro.| `"clave_min": MinKey()`                | Usado en operaciones de ordenación.                                        |
 | **MaxKey**                | Valor especial para comparar valores mayores que cualquier otro.| `"clave_max": MaxKey()`                | Usado en operaciones de ordenación.                                        |
+
+`Aclaración Importante:` En el caso del ObejectId, se trata de una cadena hexadecimal de 12 bytes, que contienen información sobre la fecha de creación del documento (4 bytes), el identificador del servidor (5 bytes) y un contrador incremental (3 bytes). Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
 
 ## { Operaciones CRUD dentro de MongoDB Shell }
 
