@@ -260,6 +260,11 @@ En conclusión, con la utilización del comando upsert, ***la base de datos va a
 
 `Importante:` En caso de colocar el filtro y ***utilizar solo las llaves sin ninguna clave `{}` se modificarán todas las claves y valores de todos los documentos, y si ese valor no existe en un documento lo incorporará.***
 
++ _Reemplazo de un documento_: Se utiliza para reemplazar un documento o registro completo por otro distinto. La operación reemplaza todo el contenido del documento o registro que coincida con una condición establecida, y ***mantendrá el mismo Nº de _id que ese documento tenía previo al cambio***, por lo tanto no se ven afectados los índices de la colección. Solo existe el comando `replaceOne` dentro de MongoDB, si se pretenden efectuar reemplazos masivos, deberá recurrirse al apoyo de Javascript. A continuación, ejemplo de un reemplazo: 
+```sql 
+db.mycoleccion.replaceOne({nombre:"Juan"}, {nombre: "Jesy",edad: 36,ocupacion:"Contadora"})  //reemplaza los nuevos datos de Jesy en el documento Juan
+```
+
 + _Eliminación de un registro_: Solo se elimina el primer registro que cumpla con las características del filtro, si existen más registros con las mismas condiciones no serán adulterados puesto que el comando es **One**. 
 ```sql
 db.mycoleccion.deleteOne({nombre: "Juan"})
