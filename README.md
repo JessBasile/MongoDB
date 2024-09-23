@@ -294,6 +294,17 @@ db.mycoleccion.deleteMany({$and:[{nombre: "Juan"},{edad: 25}]})
 + _Inserción de un documento json_: Se posiciona sobre la colección y se selecciona la opción `ADD DATA` ---> `Insert document` incorporará automáticamente el ObjectId y se debe agregar luego de la llave } las claves y valores.
 
 + _Lectura de documentos en una colección_: Debe abrirse la colección, en la que puede escrolearse y observar visualmente su composición si efectuar ningún comando. Asimismo, en la parte superior derecha existe un bontón `find` que permite aplicar determinados criterios para consultar documentos.
+  
++ _Lectura de documentos con determinados criterios_: Se recurre en el margen superior derecho a `Options` y se escribe la instrucción: {year:2014} y luego click en ----> `Find` es mucho más sintético el comando respecto MongoDB Shell, y se repite la utilización de los otros comandos como: {year:{$gt:2014}}
+
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/findCompass.png" alt="FindCompass">
+
++ _Lectura con proyección de campos específicos en los documentos_: Al igual que en caso de MongoDB Shell, se puede efectuar en Compass a través de `Options` y luego, `Project` indicando específicamente los campos a visualizar, y luego confirmando con ---- > `Find`
+
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/project.png" alt="Project">
+
+`Información Adicional:` Podrán utilizarse Options con filtros y además projects para limitar los campos de los resultados en las consultas de los documentos.
+En el caso del sort, se puede aplicar una proyección con los valores 1 y -1.
 
 + _Modificación/Actualización individual de un solo documento_: Se debe posicionar sobre el documento a modificar, se da click sobre el lapiz, y se activa el modo edición habilitándose en la derecha la información de los tipos de datos. Se puede posicionar directo sobre el valor que se desea modificar, se borra y reemplaza por el dato que se requiere, siempre concluyendo la operación clickeando en `Update` a la derecha inferior.
 
