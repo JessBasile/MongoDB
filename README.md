@@ -356,7 +356,8 @@ Donde en el caso de un número que se concatena con un texto (string) se une los
 ## Objetos utilizados en JavaScript
 
 ***Arreglos***
-Los arreglos son un conjunto de datos que se generan bajo una determinadas estructura. Si bien, los arreglo permiten la combinación de distintos tipos de datos, NO es lo recomendable.
+
+Los arreglos son un conjunto de datos que se generan bajo una determinadas estructura. Si bien, los arreglos permiten la combinación de distintos tipos de datos, NO es lo recomendable.
 ```sql
 var miarreglo = ["uno","dos","tres"]
 print(miarreglo)
