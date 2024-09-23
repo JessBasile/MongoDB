@@ -340,7 +340,7 @@ es un texto nuevo esto es otro texto de prueba
 true
 ```
 `Particularidad:`En el caso de la concatenación de números será más recomendable el comando `.concat`, se ejemplificará más adelante.
-Si la concatenación con el signo `+` se efectúa ente número y strings, el comportamiento se modifica, como se observa a continuación:
+Si la concatenación con el signo `+` se efectúa entre número y strings, el comportamiento se modifica, como se observa a continuación:
 ```sql
 print(3 + "1")
 print(3 - "1")
