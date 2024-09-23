@@ -311,7 +311,79 @@ mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --ty
 
 + _Importación de un documento csv desde interface MongoDB Compass_: Opera igual que el caso de json, se deberán posicionar sobre la colección que se desea importar datos, se da click en `Import`, se pueden moficar los tipos de datos, y efectuar la importación.
 
-## Implementación de Javascript en interacción con MongoSH
+## { Comandos para manipular consultas en MongoDB }
+
++ ***LIMIT:*** Comando utilizado para que la consulta solo devuelva una determinada cantidad de valores especificados previamente.
+```sql
+db.collection.find({}).limit(5); // Devuelve solo los primeros 5 documentos.
+```
+
++ ***SKIP:*** Se implementa junto al limit, y efectua un desplazamiento de cierta cantidad de registros. Se suele utilizar en las páginas web para mostrar una cantidad limitada de artículos, y dar posibilidad al usuario, que continúe mirando los siguientes.
+```sql
+db.pelis.find().sort({ year: -1 }).skip(5).limit(5) // Omite los primeros 5 documentos, ordena los resultados edad descendente y devuelve solo 5 documentos.
+```
+
++ ***SORT:*** Es un comando que se suele utilizar en conjunto al limit, cuya función es ordenar los resultados de forma ascendente:1 y descendente:-1.
+```sql
+db.pelis.find().sort({ year: -1 }).limit(5) // Ordena los resultados por el campo "age" de forma ascendente y solo trae 5 documentos.
+```
+
++ ***GROUP:*** El comando $group permite agrupar documentos por un campo específico y realizar operaciones agregadas en esos grupos.
+```sql
+db.productos.aggregate([{$group: { _id: "$categoria"  // Agrupa por el campo 'categoria'}}])
+```
+
++ ****PROJECT:*** Lectura con proyección de campos específicos en los documentos: Para este tipo de consultas se utiliza el comando $project un framework de agregación de MongoDB para seleccionar, transformar, o proyectar campos específicos de los documentos que se están leyendo de una colección. Aunque project no es un operador de consulta directa, se usa en pipelines de agregación para definir los campos que se deben incluir o excluir en los resultados cuando se leen datos, un ejemplo a continuación:
+```sql 
+db.mycoleccion.aggregate([{$project: {nombre: 1, edad: 1, _id: 0}}]) //el N° 1 indica los campos que se desean visualizar y el 0 para excluir el _id que por default siempre aparece en la consulta.
+```
+`Información Adicional:` Podrán utilizarse filtros y además projects para limitar los campos de los resultados en las consultas de los documentos.
+
++ ***AGGREGATE:*** Es utilizado para realizar operaciones avanzadas de procesamiento de datos a través del pipeline de agregación. Varios operadores y comandos solo pueden usarse dentro del contexto de un pipeline de agregación, tales como: `$match` (el where en SQL), `$group` (group by en SQL), `$project` (un SELECT que realiza transformaciones), `$sort` (order by en SQL), `$limit` (establece un límite en la cantidad de valores que devuelve, acorde a lo especificado previamente), `$skip` (OFFSET en SQL), `$lookup` (left join en SQL).
+Ejemplo simple de aggregate a continuación:
+```sql
+db.collection.aggregate([{ $match: { status: "active" } },          // Etapa 1: Filtrar documentos con $match (equivalente a WHERE)
+{ $group: { _id: "$category", total: { $sum: "$amount" } } },  // Etapa 2: Agrupar por "category" y sumar los "amount"
+{ $sort: { total: -1 } },                  // Etapa 3: Ordenar los resultados por "total" en orden descendente
+{ $limit: 5 }]);                          // Etapa 4: Limitar a los 5 resultados principales
+```
+
++ ***LOOKUP:*** Dentro de MongoDB existe la posibilidad de realizar un LEFT JOIN mediante la utilización del comando $lookup, aunque vuelve la base de datos relacional dentro de MongoDB, un ejemplo a continuación:
+```sql 
+db.clientes.aggregate([{
+    $lookup: {
+      from: "facturas",        // Colección con la que deseas hacer el "join"
+      localField: "_id",       // Campo en la colección "clientes" (clave primaria)
+      foreignField: "id_cliente", // Campo en la colección "facturas" (clave externa)
+      as: "facturas"           // Alias donde se almacenarán las facturas relacionadas
+    }}])
+```
+
+## { Operadores de filtrado y actualización } 
+
+Lectura de documentos con filtro, ne el siguiente caso se solicita ver el listado de documentos que contienen películas del año 2014:
+```sql
+db.pelis.find({year:2014})
+```
+En el caso que además desee saber el total de registros de películas que componen esa colección en el año 2014, se utiliza el comando:
+```sql
+db.pelis.find({year:2014}).count()
+db.pelis.countDocuments({ year: 2014 })  //otra alternativa con un comando más moderno
+```
+Luego, pueden incorporarse operadores relacionales o de comparación en las consultas que permitan ser más específicas:
+```sql 
+db.pelis.find({ year: { $eq: 2014 } }).count()  //$eq compara si es igual – significa Equal
+```
+En el caso que se desee un rango de fecha, se utiliza el siguiente comando:
+```sql 
+db.pelis.find({ year: { $gt: 2014 } }).count()  //$gt número de documentos con año mayor a 2014 – significa Greater Than
+db.pelis.countDocuments({ year: { $gt: 2014 } }) //versión más moderna
+db.pelis.find({ year: { $gte: 2014 } }).count()  //$gte número de documentos iguales o mayores al año 2014 – significa Greater Than or Equal
+db.pelis.find({ year: { $lte: 2014 } }).count()  //$let número de documentos menores o igual al año 2014 – significa Less Than or Equal
+db.pelis.countDocuments({ year: { $lte: 2014 } })  // versión más moderna
+```
+
+## { Implementación de Javascript en interacción con MongoSH }
 
 <img align="right" alt="Logo Javascript" width="250" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/JS-Logo.png">
 
@@ -348,7 +420,7 @@ var mastexto = "esto es otro texto de prueba"
 var resultado = minuevotexto + mastexto
 print(resultado)
 ```
-Respuesta:
+_Respuesta:_
 ```sql
 es un texto nuevo esto es otro texto de prueba 
 true
@@ -359,7 +431,7 @@ Si la concatenación con el signo `+` se efectúa entre número y strings, el co
 print(3 + "1")
 print(3 - "1")
 ```
-Respuesta:
+_Respuesta:_
 ```sql
 31
 2
@@ -367,7 +439,7 @@ Respuesta:
 Donde en el caso de un número que se concatena con un texto (string) se une los valores, pero en el caso de la resta no aplica y realiza la operación aritmética.
 
 ---
-## Objetos utilizados en JavaScript
+## { Objetos utilizados en JavaScript }
 
 ***Arreglos***
 
@@ -376,7 +448,7 @@ Los arreglos son un conjunto de datos que se generan bajo una determinadas estru
 var miarreglo = ["uno","dos","tres"]
 print(miarreglo)
 ```
-Respuesta
+_Respuesta:_
 ```sql
 [ 'uno', 'dos', 'tres' ]
 ```
@@ -385,7 +457,7 @@ Respuesta
 var miarreglo = ["uno","dos","tres"]
 print(miarreglo[1])
 ```
-Respuesta
+_Respuesta:_
 ```sql
 dos
 ```
