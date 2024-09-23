@@ -321,7 +321,7 @@ Lo cual arrojará la leyenda "Hola Mundo JS-Mongo" (sin las comillas).
 Partiendo del supuesto que se cuenta con la siguiente linea de código en el archivo .js print, la cual NO es una variable, puede 
 asignarse una variable con otro texto, un ejemplo a continuación:
 ```sql
-print("Hola mundo JS-Mongo")
+print("Hola mundo JS-Mongo")  // NO es una variable
 mivariable = "Otro hola mundo"
 print(mivariable)
 ```
