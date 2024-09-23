@@ -386,8 +386,12 @@ db.pelis.find({ year: { $lt: 2014 } }).count()  //$lt número de documentos meno
 db.pelis.find({ year: { $in: [2014, 2015, 2016] } })  //$in busca peliculas del año 2014/15/16 – significa In
 db.pelis.find({ year: { $nin: [2014, 2015, 2016] } })  //$nin busca peliculas donde el año no sea 2014/15/16 – significa Not In
 db.pelis.find({ year: { $exists: true } })  //$exists busca documentos donde el campo year existe – significa Exists
-db.pelis.find({ year: { $type: "int" } })  //$exists busca documentos donde el campo year es de tipo entero – significa Type
-db.pelis.find({ year: { $all: [2014, 2015] } })  //$exists Busca documentos donde el array year contiene tanto 2014 como 2015 – significa All
+db.pelis.find({ year: { $type: "int" } })  //$type busca documentos donde el campo year es de tipo entero – significa Type
+db.pelis.find({ year: { $all: [2014, 2015] } })  //$all busca documentos donde el array year contiene tanto 2014 como 2015 – significa All
+db.pelis.find({ "year": { $size: 1 } }) // $size busca documentos donde el array year tiene exactamente 1 elemento
+db.pelis.find({$and: [{ year: { $gt: 2013 } },  // El año debe ser mayor que 2013
+{ rating: { $gte: 8.0 } }]}) // El rating debe ser mayor o igual a 8.0 - busca ambas condiciones en simultáneo.
+db.pelis.countDocuments({$or: [{ year: 2014 }, { year: 2015 }]})
 ```
 
 ## { Implementación de Javascript en interacción con MongoSH }
