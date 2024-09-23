@@ -141,27 +141,28 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 ## { Tipos de datos en MongoDB }
 
 
-| Tipo de Dato              | Utilidad                                                      | Ejemplo de Uso                          | Comentario                                                                 |
-|---------------------------|---------------------------------------------------------------|-----------------------------------------|---------------------------------------------------------------------------|
-| **_id**                   | Identificador único por documento.                            | `"_id": ObjectId("507f191e810c19729de860ea")` | Cada documento debe tener un campo `_id`. Puede ser generado automáticamente o definido manualmente. |
-| **String**                | Almacena texto o cadenas de caracteres.                        | `"nombre": "Jesica Basile"`             | Siempre se encierra entre comillas dobles.                                 |
-| **Number**                | Almacena valores numéricos, ya sean enteros o decimales.       | `"edad": 30`                            | Puede ser `int`, `long`, `double`, dependiendo del valor numérico.         |
-| **Float**                 | Almacena números de punto flotante (decimales).                | `"precio": 19.99`                       | Usado para cálculos que requieren números decimales.                       |
-| **Int**                   | Almacena valores numéricos enteros.                            | `"cantidad": 100`                       | Útil cuando se trabaja con números sin decimales.                          |
-| **Boolean**               | Almacena valores de verdad (true/false).                       | `"es_activo": true`                     | Representa banderas lógicas, como estados o condiciones.                   |
-| **Array**                 | Almacena listas de elementos, que pueden ser de cualquier tipo.| `"cursos": ["MongoDB", "SQL", "Excel"]` | Útil para almacenar conjuntos de datos relacionados.                       |
-| **Object**                | Almacena documentos incrustados, es decir, objetos anidados.   | `"direccion": {"ciudad": "Buenos Aires", "pais": "Argentina"}` | Se usa para modelar estructuras más complejas en un solo campo.            |
-| **ObjectId**              | Almacena un identificador único para cada documento.           | `"id": ObjectId("507f191e810c19729de860ea")` | MongoDB genera automáticamente un `ObjectId` único por defecto.            |
-| **Date**                  | Almacena fechas en un formato de tiempo (timestamp).           | `"fecha_creacion": ISODate("2022-09-18T10:00:00Z")` | Útil para almacenar fechas y horas con precisión en formato ISO 8601.      |
-| **ISODate**               | Variante específica del tipo `Date`, en formato ISO 8601.      | `"fecha_nacimiento": ISODate("1990-12-01T00:00:00Z")` | Se usa para manejar fechas estandarizadas internacionalmente.              |
-| **Null**                  | Representa un valor nulo o inexistente.                        | `"observaciones": null`                 | Se usa cuando un campo no tiene valor asignado.                            |
-| **Binary Data**           | Almacena datos binarios, como imágenes o archivos.             | `"archivo": BinData(0, "aGVsbG8gd29ybGQ=")` | Ideal para almacenar contenido binario como imágenes, videos, etc.         |
-| **Decimal128**            | Almacena números de punto flotante de alta precisión.          | `"precio": NumberDecimal("19.99")`      | Útil para cálculos financieros donde la precisión es crítica.              |
-| **Regular Expression**    | Almacena expresiones regulares para búsquedas avanzadas.       | `db.productos.find({nombre: {$regex: /camiseta/i}})` | Útil para buscar patrones en cadenas de texto.                             |
-| **Geolocalización/GeoJSON** | Almacena datos de ubicación geográfica en formato GeoJSON.    | `"ubicacion": {"type": "Point", "coordinates": [-69.8983, 18.4725]}` | Se utiliza para almacenar coordenadas geográficas (latitud/longitud).      |
-| **Timestamp**             | Almacena valores de tiempo con una resolución mayor que `Date`.| `"registro": Timestamp(1630001234, 1)`  | Usado internamente por MongoDB para operaciones de replicación.            |
-| **MinKey**                | Valor especial para comparar valores menores que cualquier otro.| `"clave_min": MinKey()`                | Usado en operaciones de ordenación.                                        |
-| **MaxKey**                | Valor especial para comparar valores mayores que cualquier otro.| `"clave_max": MaxKey()`                | Usado en operaciones de ordenación.                                        |
+| Tipo de Dato              | Utilidad                                                      | Ejemplo de Uso                          |
+|---------------------------|---------------------------------------------------------------|-----------------------------------------|
+| **_id**                   | Identificador único por documento.                            | `"_id": ObjectId("507f191e810c19729de860ea")` |
+| **String**                | Almacena texto o cadenas de caracteres.                        | `"nombre": "Jesica Basile"`             |
+| **Number**                | Almacena valores numéricos, ya sean enteros o decimales (`int`, `long`, `double`). | `"edad": 30` |
+| **Float**                 | Almacena números de punto flotante (decimales).                | `"precio": 19.99`                       |
+| **Int**                   | Almacena valores numéricos enteros.                            | `"cantidad": 100`                       |
+| **Boolean**               | Almacena valores de verdad (true/false).                       | `"es_activo": true`                     |
+| **Array**                 | Almacena listas de elementos, que pueden ser de cualquier tipo.| `"cursos": ["MongoDB", "SQL", "Excel"]` |
+| **Object**                | Almacena documentos incrustados, es decir, objetos anidados.   | `"direccion": {"ciudad": "Buenos Aires", "pais": "Argentina"}` |
+| **ObjectId**              | Almacena un identificador único para cada documento.           | `"id": ObjectId("507f191e810c19729de860ea")` |
+| **Date**                  | Almacena fechas en un formato de tiempo (timestamp).           | `"fecha_creacion": ISODate("2022-09-18T10:00:00Z")` |
+| **ISODate**               | Variante específica del tipo `Date`, en formato ISO 8601.      | `"fecha_nacimiento": ISODate("1990-12-01T00:00:00Z")` |
+| **Null**                  | Representa un valor nulo o inexistente.                        | `"observaciones": null`                 |
+| **Binary Data**           | Almacena datos binarios, como imágenes o archivos.             | `"archivo": BinData(0, "aGVsbG8gd29ybGQ=")` |
+| **Decimal128**            | Almacena números de punto flotante de alta precisión.          | `"precio": NumberDecimal("19.99")`      |
+| **Regular Expression**    | Almacena expresiones regulares para búsquedas avanzadas.       | `db.productos.find({nombre: {$regex: /camiseta/i}})` |
+| **Geolocalización/GeoJSON** | Almacena datos de ubicación geográfica en formato GeoJSON.    | `"ubicacion": {"type": "Point", "coordinates": [-69.8983, 18.4725]}` |
+| **Timestamp**             | Almacena valores de tiempo con una resolución mayor que `Date`.| `"registro": Timestamp(1630001234, 1)`  |
+| **MinKey**                | Valor especial para comparar valores menores que cualquier otro.| `"clave_min": MinKey()`                |
+| **MaxKey**                | Valor especial para comparar valores mayores que cualquier otro.| `"clave_max": MaxKey()`                |
+
 
 `Aclaración Importante:` En el caso del ObejectId, se trata de una cadena hexadecimal de 12 bytes, que contienen información sobre la fecha de creación del documento (4 bytes), el identificador del servidor (5 bytes) y un contrador incremental (3 bytes). Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
 
