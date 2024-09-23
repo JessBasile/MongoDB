@@ -302,3 +302,75 @@ mongoimport --uri "mongodb://localhost:27017/mi_base" --collection clientes --ty
 <img align="right" alt="Logo Javascript" width="250" src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/JS-Logo.png">
 
 Se decide operar con Visual Studio Code desde terminal para Javascript y se conecta a MongoDB Shell con el comando  `mongosh`. Desde la terminal de Mongo Shell también pueden ejecutarse comandos de Javascript dado que es interprete de ese lenguaje de programación.
+La sección de Visual Studio Code a través de la cual se accede a la terminal, se detalla en la imagen a continuación:
+
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/terminalVisual.png" alt="TerminalVisual">
+
+---
+***Salida de datos en un script de shell MongoDB***
+
+Para efectuar la salida de datos a través de la terminal, será importante utilizar en el archivo .js el comando `print("Hola Mundo JS-Mongo")` que permitirá leer en la terminal cuando se utilice el comando
+```sql
+load ("nombre_archivo")
+```
+Lo cual arrojará la leyenda "Hola Mundo JS-Mongo" (sin las comillas).
+
+---
+***Definición de Variables***
+
+Partiendo del supuesto que se cuenta con la siguiente linea de código en el archivo .js print, la cual NO es una variable, puede 
+asignarse una variable con otro texto, un ejemplo a continuación:
+```sql
+print("Hola mundo JS-Mongo")
+mivariable = "Otro hola mundo"
+print(mivariable)
+```
+Cuya respuesta serán ambos textos en renglores diferentes, pero los diferencia es que uno fué creado a través de una lectura y otro desde una variable que luego se leerán consecutivamente.
+
+Pueden sumarse variables para arrojar un valor compuesto, donde el símbolo `+` concatena las variables de tipo texto (string), ejemplificado a continuación:
+```sql
+var minuevotexto = "es un texto nuevo"
+var mastexto = "esto es otro texto de prueba"
+var resultado = minuevotexto + mastexto
+print(resultado)
+```
+Respuesta:
+```sql
+es un texto nuevo esto es otro texto de prueba 
+true
+```
+`Particularidad:`En el caso de la concatenación de números será más recomendable el comando `.concat`, se ejemplificará más adelante.
+Si la concatenación con el signo `+` se efectúa ente número y strings, el comportamiento se modifica, como se observa a continuación:
+```sql
+print(3 + "1")
+print(3 - "1")
+```
+Respuesta:
+```sql
+31
+2
+```
+Donde en el caso de un número que se concatena con un texto (string) se une los valores, pero en el caso de la resta no aplica y realiza la operación aritmética.
+
+---
+## Objetos utilizados en JavaScript
+
+***Arreglos***
+Los arreglos son un conjunto de datos que se generan bajo una determinadas estructura. Si bien, los arreglo permiten la combinación de distintos tipos de datos, NO es lo recomendable.
+```sql
+var miarreglo = ["uno","dos","tres"]
+print(miarreglo)
+```
+Respuesta
+```sql
+[ 'uno', 'dos', 'tres' ]
+```
+`Importante:` En el caso de desear imprimir solo un valor del arreglo deberá indicarse su número, tomando como 0 el valor de la primera clave:
+```sql
+var miarreglo = ["uno","dos","tres"]
+print(miarreglo[1])
+```
+Respuesta
+```sql
+dos
+```
