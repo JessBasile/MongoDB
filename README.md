@@ -113,6 +113,14 @@ mongosh "mongodb+srv://m001-student:m001-mongodb-basics@cluster0-jxeqq.mongodb.n
 Por consiguiente, una colección puede contener muchos documentos. Cada documento puede tener una estructura diferente, aunque generalmente se sigue una estructura común dentro de una colección para mantener la coherencia de los datos.
 + Siempre que se inserten datos en un documentos, MongoDB asignará un ObjetcId.
 
+| Concepto SQL       | Concepto MongoDB  |
+|--------------------|-------------------|
+| Base de datos      | Base de datos      |
+| Tabla              | Colección          |
+| Fila               | Documento          |
+| Columna            | Campo              |
+| Índice             | Índice             |
+
 ## { Primeros comandos en MongoDB Shell }
 
 El primer comando en MongoDB Shell que se suele utilizar es `db.help` que proporciona información sobre las funciones básicas que se pueden utilizar dentro de la base de datos en la que se encuentra posicionado a la hora de ejecutar el comando.
