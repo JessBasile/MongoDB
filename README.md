@@ -373,14 +373,21 @@ db.pelis.countDocuments({ year: 2014 })  //otra alternativa con un comando más 
 Luego, pueden incorporarse operadores relacionales o de comparación en las consultas que permitan ser más específicas:
 ```sql 
 db.pelis.find({ year: { $eq: 2014 } }).count()  //$eq compara si es igual – significa Equal
+db.pelis.find({ year: { $ne: 2014 } }).count()  //$ne compara que no es igual al valor especificado – significa Not Equal
 ```
-En el caso que se desee un rango de fecha, se utiliza el siguiente comando:
+A continuación se especifican una variedad amplia de operadores de filtrado o comparación
 ```sql 
 db.pelis.find({ year: { $gt: 2014 } }).count()  //$gt número de documentos con año mayor a 2014 – significa Greater Than
 db.pelis.countDocuments({ year: { $gt: 2014 } }) //versión más moderna
 db.pelis.find({ year: { $gte: 2014 } }).count()  //$gte número de documentos iguales o mayores al año 2014 – significa Greater Than or Equal
 db.pelis.find({ year: { $lte: 2014 } }).count()  //$let número de documentos menores o igual al año 2014 – significa Less Than or Equal
 db.pelis.countDocuments({ year: { $lte: 2014 } })  // versión más moderna
+db.pelis.find({ year: { $lt: 2014 } }).count()  //$lt número de documentos menores al año 2014 – significa Less Than
+db.pelis.find({ year: { $in: [2014, 2015, 2016] } })  //$in busca peliculas del año 2014/15/16 – significa In
+db.pelis.find({ year: { $nin: [2014, 2015, 2016] } })  //$nin busca peliculas donde el año no sea 2014/15/16 – significa Not In
+db.pelis.find({ year: { $exists: true } })  //$exists busca documentos donde el campo year existe – significa Exists
+db.pelis.find({ year: { $type: "int" } })  //$exists busca documentos donde el campo year es de tipo entero – significa Type
+db.pelis.find({ year: { $all: [2014, 2015] } })  //$exists Busca documentos donde el array year contiene tanto 2014 como 2015 – significa All
 ```
 
 ## { Implementación de Javascript en interacción con MongoSH }
