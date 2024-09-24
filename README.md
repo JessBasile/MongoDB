@@ -140,29 +140,7 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 
 ## { Tipos de datos en MongoDB }
 
-
-| Tipo de Dato              | Utilidad                                                      | Ejemplo de Uso                          |
-|---------------------------|---------------------------------------------------------------|-----------------------------------------|
-| **_id**                   | Identificador único por documento.                            | `"_id": ObjectId("507f191e810c19729de860ea")` |
-| **String**                | Almacena texto o cadenas de caracteres.                        | `"nombre": "Jesica Basile"`             |
-| **Number**                | Almacena valores numéricos, ya sean enteros o decimales (`int`, `long`, `double`). | `"edad": 30` |
-| **Float**                 | Almacena números de punto flotante (decimales).                | `"precio": 19.99`                       |
-| **Int**                   | Almacena valores numéricos enteros.                            | `"cantidad": 100`                       |
-| **Boolean**               | Almacena valores de verdad (true/false).                       | `"es_activo": true`                     |
-| **Array**                 | Almacena listas de elementos, que pueden ser de cualquier tipo.| `"cursos": ["MongoDB", "SQL", "Excel"]` |
-| **Object**                | Almacena documentos incrustados, es decir, objetos anidados.   | `"direccion": {"ciudad": "Buenos Aires", "pais": "Argentina"}` |
-| **ObjectId**              | Almacena un identificador único para cada documento.           | `"id": ObjectId("507f191e810c19729de860ea")` |
-| **Date**                  | Almacena fechas en un formato de tiempo (timestamp).           | `"fecha_creacion": ISODate("2022-09-18T10:00:00Z")` |
-| **ISODate**               | Variante específica del tipo `Date`, en formato ISO 8601.      | `"fecha_nacimiento": ISODate("1990-12-01T00:00:00Z")` |
-| **Null**                  | Representa un valor nulo o inexistente.                        | `"observaciones": null`                 |
-| **Binary Data**           | Almacena datos binarios, como imágenes o archivos.             | `"archivo": BinData(0, "aGVsbG8gd29ybGQ=")` |
-| **Decimal128**            | Almacena números de punto flotante de alta precisión.          | `"precio": NumberDecimal("19.99")`      |
-| **Regular Expression**    | Almacena expresiones regulares para búsquedas avanzadas.       | `db.productos.find({nombre: {$regex: /camiseta/i}})` |
-| **Geolocalización/GeoJSON** | Almacena datos de ubicación geográfica en formato GeoJSON.    | `"ubicacion": {"type": "Point", "coordinates": [-69.8983, 18.4725]}` |
-| **Timestamp**             | Almacena valores de tiempo con una resolución mayor que `Date`.| `"registro": Timestamp(1630001234, 1)`  |
-| **MinKey**                | Valor especial para comparar valores menores que cualquier otro.| `"clave_min": MinKey()`                |
-| **MaxKey**                | Valor especial para comparar valores mayores que cualquier otro.| `"clave_max": MaxKey()`                |
-
+MongoDB, al ser una base de datos NoSQL, maneja una estructura de datos flexible donde almacena la información. Esto permite trabajar con una amplia variedad de tipos de datos que se adaptan a diferentes necesidades. Los mismos se resumen en una [Tabla](tipodatoMD.png)
 
 `Aclaración Importante:` En el caso del ObejectId, se trata de una cadena hexadecimal de 12 bytes, que contienen información sobre la fecha de creación del documento (4 bytes), el identificador del servidor (5 bytes) y un contrador incremental (3 bytes). Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
 
