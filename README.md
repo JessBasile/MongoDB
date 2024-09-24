@@ -183,13 +183,13 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 | **Date**                   | DATE, DATETIME          | Almacena fechas y horas.                                     |
 | **Array**                  | No equivalente directo | Almacena listas de valores, similar a una tabla de valores.  |
 | **Object**                 | No equivalente directo | Almacena documentos anidados (similar a JSON en SQL).        |
-| **ObjectId**               | PRIMARY KEY (AUTO_INCREMENT) | Almacena identificadores únicos, generados automáticamente. |
+| **ObjectId**               | PRIMARY KEY (AUTO_INCREMENT) | Almacena id únicos, generados automáticamente. |
 | **Binary Data**            | BLOB, BYTEA             | Almacena datos binarios, como imágenes o archivos.           |
 | **Decimal128**             | DECIMAL, NUMERIC        | Almacena números decimales de alta precisión.                |
 | **Null**                   | NULL                   | Representa un valor nulo o no asignado.                      |
-| **Timestamp**              | TIMESTAMP               | Almacena un valor de tiempo con precisión adicional.         |
-| **Regular Expression**     | No equivalente directo  | Almacena patrones para búsquedas textuales avanzadas.        |
-| **Geolocalización/GeoJSON**| No equivalente directo  | Almacena coordenadas geográficas en formato GeoJSON.         |
+| **Timestamp**              | TIMESTAMP               | Almacena un valor de tiempo con precisión.         |
+| **Regular Expression**     | No equivalente directo  | Almacena patrones para búsquedas avanzadas.        |
+| **Geolocalización/GeoJSON**| No equivalente directo  | Almacena coordenadas geográficas GeoJSON.         |
 
 ## { Operaciones CRUD dentro de MongoDB Shell }
 
@@ -370,9 +370,28 @@ db.clientes.aggregate([{
     }}])
 ```
 
-## { Operadores de filtrado y actualización } 
+## { Operadores de filtrado, comparación o lógicos } 
 
-Lectura de documentos con filtro, ne el siguiente caso se solicita ver el listado de documentos que contienen películas del año 2014:
+Existe distintos tipos de operadores que sirven para efectuar filtrados, actualizaciones, etc. A continuación se expone un cuadro que especifica las principales, y luego aplicación de c/u de ellas en ejemplos concretos:
+
+| **Operador** | **Tipo**        | **Descripción**                                       |
+|--------------|-----------------|-------------------------------------------------------|
+| `$eq`        | Comparación     | Compara si un valor es igual a otro.                  |
+| `$ne`        | Comparación     | Compara si un valor **no** es igual a otro.           |
+| `$gt`        | Comparación     | Verifica si un valor es **mayor que** otro.           |
+| `$gte`       | Comparación     | Verifica si un valor es **mayor o igual que** otro.   |
+| `$lt`        | Comparación     | Verifica si un valor es **menor que** otro.           |
+| `$lte`       | Comparación     | Verifica si un valor es **menor o igual que** otro.   |
+| `$in`        | Comparación     | Verifica si un valor está **dentro de un conjunto**.  |
+| `$nin`       | Comparación     | Verifica si un valor **no está** en un conjunto.      |
+| `$exists`    | Elemento        | Verifica si un campo **existe** en el documento.      |
+| `$type`      | Elemento        | Verifica el **tipo de dato** de un campo.             |
+| `$all`       | Array           | Verifica si un array contiene **todos** los valores.  |
+| `$size`      | Array           | Verifica el **tamaño** de un array.                   |
+| `$and`       | Lógico          | Verifica si **todas** las condiciones son verdaderas. |
+| `$or`        | Lógico          | Verifica si **alguna** de las condiciones es verdadera.|
+
+La lectura de documentos con filtro, puede abordarse en el siguiente caso en el que se solicita ver el listado de documentos que contienen películas del año 2014:
 ```sql
 db.pelis.find({year:2014})
 ```
@@ -386,7 +405,7 @@ Luego, pueden incorporarse operadores relacionales o de comparación en las cons
 db.pelis.find({ year: { $eq: 2014 } }).count()  //$eq compara si es igual – significa Equal
 db.pelis.find({ year: { $ne: 2014 } }).count()  //$ne compara que no es igual al valor especificado – significa Not Equal
 ```
-A continuación se especifican una variedad amplia de operadores de filtrado o comparación
+A continuación se especifican una variedad amplia de operadores de filtrado o comparación en ejemplos concretos:
 ```sql 
 db.pelis.find({ year: { $gt: 2014 } }).count()  //$gt número de documentos con año mayor a 2014 – significa Greater Than
 db.pelis.countDocuments({ year: { $gt: 2014 } }) //versión más moderna
