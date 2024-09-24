@@ -140,7 +140,7 @@ Si se desea renombrar una colección en particular sobre una base de datos deter
 
 ## { Tipos de datos en MongoDB }
 
-MongoDB, al ser una base de datos NoSQL, maneja una estructura de datos flexible donde almacena la información. Esto permite trabajar con una amplia variedad de tipos de datos que se adaptan a diferentes necesidades. Los mismos se resumen en una [Tabla](tipodatoMD.png)
+MongoDB, al ser una base de datos NoSQL, maneja una estructura de datos flexible donde almacena la información. Esto permite trabajar con una amplia variedad de tipos de datos que se adaptan a diferentes necesidades. Los mismos se resumen en una [Tabla](imagenes/tipodatoMD.png)
 
 `Aclaración Importante:` En el caso del ObejectId, se trata de una cadena hexadecimal de 12 bytes, que contienen información sobre la fecha de creación del documento (4 bytes), el identificador del servidor (5 bytes) y un contrador incremental (3 bytes). Se genera automáticamente si no se especifica un valor _id. En caso de determinar al momento de insertar los datos el _id, MongoDB respetará la estructura y podrá tratarse de cualquier tipo de dato, como un número, una cadena de texto, o incluso un valor personalizado.
 
