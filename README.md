@@ -414,7 +414,7 @@ La sección de Visual Studio Code a través de la cual se accede a la terminal, 
 ---
 ***Salida de datos en un script de shell MongoDB***
 
-Para efectuar la salida de datos a través de la terminal, será importante utilizar en el archivo .js el comando `print("Hola Mundo JS-Mongo")` que permitirá leer en la terminal cuando se utilice el comando
+Para efectuar la salida de datos a través de la terminal, será importante utilizar en el archivo .js el comando `print("Hola Mundo JS-Mongo")` de tipo string que permitirá leer en la terminal cuando se utilice el comando
 ```sql
 load ("nombre_archivo")
 ```
@@ -480,3 +480,53 @@ _Respuesta:_
 ```sql
 dos
 ```
+En el caso de una variable que posea un objeto y dentro del mismo un arreglo `[]` en el cual se desee hacer una impresión específica, se deberá elaborar la línea de código, dentro de la cual es especifica el valor que se desea obtener dentro del índice del arreglo:
+```sql 
+var obj = {"nombre":"Carlos", "ocupacion":["medico","musico","abogado"], "edad":"Desconocida"};
+print(obj.nombre, obj.ocupacion[1]);
+```
+_Respuesta:_
+```sql
+Carlos músico
+```
+
+---
+***Objeto Literal***
+Se trata de un bojeto que contiene pares `clave-valor`. Estos pares permiten que almacenar múltiples valores dentro de un solo objeto, cada uno asociado a una clave. A continuación un ejemplo de su creación, su impresión general y específica sobre la edad:
+```sql
+var miObjeto = {"nombre":"Juan", "edad":33, "activo":true}
+print(miObjeto)
+print(miObjeto.edad)
+```
+_Respuesta_
+```sql
+{ nombre: 'Juan', edad: 33, activo: true }
+33
+```
+***Formato JSON***
+
+El siguiente comando muestra un objeto en formato json pero expantido y no en una sola línea (en relación a un entorno MongoDB):
+```sql
+printjson(miObjeto)
+```
+_Respuesta:_
+```sql 
+{
+  nombre: 'Juan',
+  edad: 33,
+  activo: true
+}
+```
+En cambio, el siguiente comando, devuelve la impresión pero en string, es decir, convierte el json en string:
+```sql 
+print(JSON.stringify(miObjeto))
+```
+_Respuesta:_
+```sql
+{"nombre":"Juan","edad":33,"activo":true}
+```
+
+---
+***Funciones***
+
+son piezas de código que no se ejecutan de manera instantánea, si no se invocan las funciones no se ejecutan. Se deben determinar parámetros de la función, para poder realizar una operación en particular, y luego retornarla. En el caso de la base de datos de mi CV, se crearon funciones para determinar la cantidad de tiempo desde que obtuve mis certificaciones y formación docente:
