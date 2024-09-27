@@ -532,4 +532,97 @@ _Respuesta:_
 ---
 ***Funciones***
 
-son piezas de código que no se ejecutan de manera instantánea, si no se invocan las funciones no se ejecutan. Se deben determinar parámetros de la función, para poder realizar una operación en particular, y luego retornarla. En el caso de la base de datos de mi CV, se crearon funciones para determinar la cantidad de tiempo desde que obtuve mis certificaciones y formación docente:
+Son piezas de código que no se ejecutan de manera instantánea, si no que deben ser invocadas para poder ejecutarse. Se deben determinar parámetros de la función, a fin de poder realizar una operación en particular, y luego retornarla. En el caso de la base de datos de mi CV, se crearon funciones para determinar la cantidad de tiempo desde que obtuve mis certificaciones. En este ejemplo, el código `itera` sobre cada documento en la colección certificaciones de MongoDB utilizando el método find() combinado con forEach(), de ese modo, find recupera los documentos e itera con forEach() que recorre cada documento uno por uno. En síntesis, el código itera sobre los documentos de la colección certificaciones utilizando la función creada (calcularTiempoDesdeCertificacion):
+```sql
+function calcularTiempoDesdeCertificacion(fecha_finalizacion) {const fechaFin = new Date(fecha_finalizacion);const fechaActual = new Date();let años = fechaActual.getFullYear() - fechaFin.getFullYear();let meses = fechaActual.getMonth() - fechaFin.getMonth();if (meses < 0) {años--;meses += 12;}return { años, meses };}
+
+db.certificaciones.find().forEach(function(doc) {const { años, meses } = calcularTiempoDesdeCertificacion(doc.fecha_finalizacion);print(`Certificación: ${doc.titulo}, Años: ${años}, Meses: ${meses}`);});
+```
+_Respuesta:_
+```sql
+Certificación: Introduccion a MongoDB, Años: 0, Meses: 0
+Certificación: SQL, Años: 0, Meses: 1
+Certificación: Data Analytics, Años: 0, Meses: 6
+Certificación: Curso de Excel Avanzado Superior, Años: 0, Meses: 10
+Certificación: Mandataria del Automotor, Años: 9, Meses: 1
+```
+***Función Ternaria***
+
+Existe una `función ternaria` (contiene operador ternario) que aplicada a la base de datos CV, puede usarse sobre las fechas que responden con tipo de dato string “Actualidad”, como por ejemplo:
+```sql 
+function TitulosEnCurso(fecha_finalizacion){return fecha_finalizacion === "Actualidad" ? "No Completado 100%" : "Finalizado"}
+db.formacion_academica.find().forEach(function(doc) {const estado = TitulosEnCurso(doc.fecha_finalizacion);print(`Título: ${doc.titulo}, Estado: ${estado}`);});
+```
+_Respuesta:_
+```sql
+Título: Maestría en Dirección y Gestión de RRHH, Estado: No Completado 100%
+Título: Contador Público, Estado: Finalizado
+Título: Técnica Universitaria en Ciencias Económicas, Estado: Finalizado
+Título: Técnico Superior en Administración de Empresas, Estado: Finalizado
+```
+***Función con concatenación sobre objeto string***
+
+Se suele utilizar cuando se declaran variables con tipo de dato string, ejemplo:
+```sql 
+var nombre = "Jesi";
+var apellido = "Basile";
+var nombreCompleto = nombre.concat(" ", apellido);
+print(nombreCompleto);
+```
+_Respuesta:_
+```sql 
+test> load ("1funciones.js") //llamado del archivo que contiene la función
+Jesi Basile
+true
+```
+***Función del comando indexOf***
+
+En el caso de utilizar el comando indexOf, contará la posición en la que se encuentra la letra que indicamos dentro de la cadena de texto del string, ejemplo a continuación:
+```sql 
+var nombreyapellido = "Jesica Basile";
+print(nombreyapellido.indexOf('i'));
+```
+_Respuesta:_
+```sql 
+test> load ("1funciones.js") //llamado del archivo que contiene la función
+3
+true
+```
+***Función del comando slice***
+
+En el caso del comando slice, cortará una porción de texto acorde a las indicaciones especificadas, ejemplo:
+```sql 
+var nombreyapellido = "Jesica Basile";
+print(nombreyapellido.slice(0 , 4));
+```
+_Respuesta:_
+```sql
+test> load ("1funciones.js") //llamado del archivo que contiene la función
+Jesi
+true
+```
+Existen muchas más funciones que pueden experimentarse, sobre las que no se efectuaron ejemplos en este repositorio.
+
+---
+***Array***
+
+Se trata de un arreglo que representa una estructura de datos que permite almacenar múltiples valores en una sola variable. En JavaScript, los arrays son muy flexibles y se pueden usar para almacenar diferentes tipos de datos. Un ejemplo a continuación con un array que contiene índice:
+```sql
+var arr = new Array()
+arr[0] = "Volkswagen"
+arr[1] = "Toyota"
+arr[2] = "Audi"
+print(arr)
+print(arr[0])
+```
+_Respuesta:_
+```sql
+test> load ("1funciones.js")  //llamado del archivo que contiene la función
+[ 'Volkswagen', 'Toyota', 'Audi' ]
+Volkswagen
+true
+```
+
+---
+## { Operadores utilizadas en JavaScript }
+
