@@ -492,6 +492,7 @@ Carlos músico
 
 ---
 ***Objeto Literal***
+
 Se trata de un bojeto que contiene pares `clave-valor`. Estos pares permiten que almacenar múltiples valores dentro de un solo objeto, cada uno asociado a una clave. A continuación un ejemplo de su creación, su impresión general y específica sobre la edad:
 ```sql
 var miObjeto = {"nombre":"Juan", "edad":33, "activo":true}
@@ -503,6 +504,8 @@ _Respuesta_
 { nombre: 'Juan', edad: 33, activo: true }
 33
 ```
+
+---
 ***Formato JSON***
 
 El siguiente comando muestra un objeto en formato json pero expantido y no en una sola línea (en relación a un entorno MongoDB):
