@@ -624,27 +624,50 @@ true
 ```
 
 ---
+***Listado de métodos en Javascript***
+
+| **Método**       | **Descripción**                                                                 | **Tipo de Objeto**      |
+|------------------|---------------------------------------------------------------------------------|-------------------------|
+| `push()`         | Añade uno o más elementos al final de un array y devuelve la nueva longitud.     | Arrays                  |
+| `pop()`          | Elimina el último elemento de un array y lo devuelve.                           | Arrays                  |
+| `shift()`        | Elimina el primer elemento de un array y lo devuelve.                           | Arrays                  |
+| `unshift()`      | Añade uno o más elementos al inicio de un array.                                | Arrays                  |
+| `concat()`       | Combina dos o más arrays y devuelve un nuevo array.                             | Arrays, Strings         |
+| `slice()`        | Devuelve una copia de una porción de un array en un nuevo array.                | Arrays, Strings         |
+| `splice()`       | Añade, quita o reemplaza elementos en un array.                                 | Arrays                  |
+| `indexOf()`      | Devuelve el índice de la primera ocurrencia de un valor en un array o string.   | Arrays, Strings         |
+| `join()`         | Une todos los elementos de un array en una cadena de texto.                     | Arrays                  |
+| `reverse()`      | Invierte el orden de los elementos de un array.                                 | Arrays                  |
+| `sort()`         | Ordena los elementos de un array en su lugar.                                   | Arrays                  |
+| `forEach()`      | Ejecuta una función para cada elemento de un array.                             | Arrays                  |
+| `map()`          | Crea un nuevo array con los resultados de aplicar una función a cada elemento.  | Arrays                  |
+| `filter()`       | Crea un nuevo array con todos los elementos que cumplen una condición.          | Arrays                  |
+| `reduce()`       | Aplica una función a cada elemento del array para reducirlo a un solo valor.    | Arrays                  |
+| `split()`        | Divide un string en un array de subcadenas, utilizando un separador.            | Strings                 |
+| `trim()`         | Elimina los espacios en blanco de los extremos de un string.                    | Strings                 |
+| `toUpperCase()`  | Convierte un string a mayúsculas.                                               | Strings                 |
+| `toLowerCase()`  | Convierte un string a minúsculas.                                               | Strings                 |
+| `charAt()`       | Devuelve el carácter en un índice específico de un string.                      | Strings                 |
+| `replace()`      | Reemplaza un valor dentro de un string con otro valor.                          | Strings                 |
+| `includes()`     | Devuelve `true` si un array o string contiene un valor específico.              | Arrays, Strings         |
+| `toFixed()`      | Formatea un número con un número fijo de decimales.                             | Numbers                 |
+| `toString()`     | Convierte un número en una cadena de texto.                                     | Numbers, Arrays         |
+| `isNaN()`        | Determina si un valor no es un número.                                          | Numbers, Global          |
+| `parseInt()`     | Convierte un string a un número entero.                                         | Global, Numbers          |
+| `parseFloat()`   | Convierte un string a un número decimal.                                        | Global, Numbers          |
+
+---
 ## { Propiedades de objetos en Javascrip }
 
-| **Propiedad**    | **Descripción**                                                                 | **Tipo de Objeto**              |
-|------------------|---------------------------------------------------------------------------------|----------------------------------|
-| `length`         | Devuelve el número de elementos o caracteres.                                   | Arrays, Strings                 |
-| `constructor`    | Devuelve la función que creó el prototipo de un objeto.                         | Todos los objetos               |
-| `prototype`      | Permite agregar propiedades y métodos a un constructor de objetos.              | Funciones y Objetos personalizados |
-| `name`           | Devuelve el nombre de una función (solo aplicable a funciones).                 | Funciones                       |
-| `__proto__`      | Hace referencia al objeto desde el cual fue heredado.                           | Todos los objetos               |
-| `toString()`     | Devuelve una representación en string del objeto.                               | Todos los objetos               |
-| `valueOf()`      | Devuelve el valor primitivo de un objeto.                                       | Todos los objetos               |
-| `constructor`    | Refleja la función que creó la instancia del objeto.                            | Todos los objetos               |
-| `keys()`         | Devuelve un array con las claves (propiedades) del objeto.                      | Objetos                         |
-| `push()`         | Añade uno o más elementos al final de un array.                                 | Arrays                          |
-| `pop()`          | Elimina el último elemento de un array y lo devuelve.                           | Arrays                          |
-| `shift()`        | Elimina el primer elemento de un array y lo devuelve.                           | Arrays                          |
-| `unshift()`      | Añade uno o más elementos al principio de un array.                             | Arrays                          |
-| `indexOf()`      | Devuelve el índice de la primera ocurrencia de un elemento (array) o carácter (string). | Arrays, Strings                 |
-| `charAt()`       | Devuelve el carácter en una posición específica.                                | Strings                         |
-| `slice()`        | Extrae una sección del array o string y devuelve un nuevo array o string.       | Arrays, Strings                 |
-| `split()`        | Divide una cadena en un array de substrings.                                    | Strings                         |
+| **Propiedad**    | **Descripción**                                                                 | **Tipo de Objeto**      |
+|------------------|---------------------------------------------------------------------------------|-------------------------|
+| `length`         | Devuelve el número de elementos en un array o el número de caracteres en un string. | Arrays, Strings          |
+| `constructor`    | Devuelve la función que creó la instancia del objeto.                           | Todos los objetos        |
+| `__proto__`      | Hace referencia al prototipo del objeto.                                         | Todos los objetos        |
+| `prototype`      | Permite agregar propiedades y métodos a un constructor de objetos.              | Funciones                |
+| `name`           | Nombre de la función (solo aplicable a funciones).                              | Funciones                |
+| `message`        | Contiene el mensaje de un error (propiedad de los objetos `Error`).             | Error                    |
+| `stack`          | Contiene el stack trace de un error (propiedad de los objetos `Error`).         | Error                    |
 
 ## { Operadores utilizados en JavaScript }
 
