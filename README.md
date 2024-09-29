@@ -624,5 +624,27 @@ true
 ```
 
 ---
+## { Propiedades de objetvos en Javascrip }
+
+| **Propiedad**    | **Descripción**                                                                 | **Tipo de Objeto**              |
+|------------------|---------------------------------------------------------------------------------|----------------------------------|
+| `length`         | Devuelve el número de elementos o caracteres.                                   | Arrays, Strings                 |
+| `constructor`    | Devuelve la función que creó el prototipo de un objeto.                         | Todos los objetos               |
+| `prototype`      | Permite agregar propiedades y métodos a un constructor de objetos.              | Funciones y Objetos personalizados |
+| `name`           | Devuelve el nombre de una función (solo aplicable a funciones).                 | Funciones                       |
+| `__proto__`      | Hace referencia al objeto desde el cual fue heredado.                           | Todos los objetos               |
+| `toString()`     | Devuelve una representación en string del objeto.                               | Todos los objetos               |
+| `valueOf()`      | Devuelve el valor primitivo de un objeto.                                       | Todos los objetos               |
+| `constructor`    | Refleja la función que creó la instancia del objeto.                            | Todos los objetos               |
+| `keys()`         | Devuelve un array con las claves (propiedades) del objeto.                      | Objetos                         |
+| `push()`         | Añade uno o más elementos al final de un array.                                 | Arrays                          |
+| `pop()`          | Elimina el último elemento de un array y lo devuelve.                           | Arrays                          |
+| `shift()`        | Elimina el primer elemento de un array y lo devuelve.                           | Arrays                          |
+| `unshift()`      | Añade uno o más elementos al principio de un array.                             | Arrays                          |
+| `indexOf()`      | Devuelve el índice de la primera ocurrencia de un elemento (array) o carácter (string). | Arrays, Strings                 |
+| `charAt()`       | Devuelve el carácter en una posición específica.                                | Strings                         |
+| `slice()`        | Extrae una sección del array o string y devuelve un nuevo array o string.       | Arrays, Strings                 |
+| `split()`        | Divide una cadena en un array de substrings.                                    | Strings                         |
+
 ## { Operadores utilizados en JavaScript }
 
