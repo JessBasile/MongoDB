@@ -111,7 +111,7 @@ mongosh "mongodb+srv://m001-student:m001-mongodb-basics@cluster0-jxeqq.mongodb.n
 + Una colección es un conjunto de documentos, similar a una tabla en una base de datos relacional.
 + Un documento es un registro individual en una colección, similar a una fila en una tabla relacional.
 Por consiguiente, una colección puede contener muchos documentos. Cada documento puede tener una estructura diferente, aunque generalmente se sigue una estructura común dentro de una colección para mantener la coherencia de los datos.
-+ Siempre que se inserten datos en un documentos, MongoDB asignará un ObjetcId.
++ Siempre que se inserten datos en un documentos, MongoDB asignará un ObjetcId, es decir, que ***siempre habrá claves primarias***.
 
 | Concepto SQL       | Concepto MongoDB  |
 |--------------------|-------------------|
