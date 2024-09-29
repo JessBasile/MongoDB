@@ -657,7 +657,7 @@ true
 | `parseFloat()`   | Convierte un string a un número decimal.                                        | Global, Numbers          |
 
 ---
-## { Propiedades de objetos en Javascrip }
+## { Propiedades de objetos en Javascript }
 
 | **Propiedad**    | **Descripción**                                                                 | **Tipo de Objeto**      |
 |------------------|---------------------------------------------------------------------------------|-------------------------|
