@@ -624,7 +624,7 @@ true
 ```
 
 ---
-## { Propiedades de objetvos en Javascrip }
+## { Propiedades de objetos en Javascrip }
 
 | **Propiedad**    | **Descripción**                                                                 | **Tipo de Objeto**              |
 |------------------|---------------------------------------------------------------------------------|----------------------------------|
