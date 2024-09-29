@@ -458,7 +458,7 @@ _Respuesta:_
 Donde en el caso de un número que se concatena con un texto (string) se une los valores, pero en el caso de la resta no aplica y realiza la operación aritmética.
 
 ---
-## { Objetos utilizados en JavaScript }
+## { Objetos y métodos utilizados en JavaScript }
 
 ***Arreglos***
 
@@ -624,5 +624,5 @@ true
 ```
 
 ---
-## { Operadores utilizadas en JavaScript }
+## { Operadores utilizados en JavaScript }
 
