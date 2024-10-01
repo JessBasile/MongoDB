@@ -26,6 +26,7 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 ## { Índice }
 
 [{ Instalación de MongoDB, Mongo Compass y MongoSH }](#{-Instalación-de-MongoDB,-Mongo-Compass-y-MongoSH-})
+[{ Implementación de MongoDB Atlas }](#{-Implementación-de-MongoDB-Atlas-})
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
