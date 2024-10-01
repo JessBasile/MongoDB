@@ -28,6 +28,20 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 1. [{ Instalación de MongoDB, Mongo Compass y MongoSH }](#-instalación-de-mongodb-mongo-compass-y-mongosh-)
 2. [{ Implementación de MongoDB Atlas }](#-implementación-de-mongodb-atlas-)
 3. [{ Consideraciones importantes en MongoDB }](#-consideraciones-importantes-en-mongodb-)
+4. [{ Primeros comandos en MongoDB Shell }](#-primeros-comandos-en-mongodb-shell-)
+5. [{ Tipos de datos en MongoDB }](#-tipos-de-datos-en-mongodb-)
+6. [{ Tipos de dato MongoDB vs Tipos de dato SQL }](#-tipos-de-dato-mongodb-vs-tipos-de-dato-sql-)
+7. [{ Operaciones CRUD dentro de MongoDB Shell }](#-operaciones-crud-dentro-de-mongodb-shell-)
+8. { Operaciones CRUD desde MondoDB Compass }
+9. { Importación en MongoDB }
+10. { Comandos para manipular consultas en MongoDB }
+11. { Operadores de filtrado, comparación o lógicos }
+12. { Implementación de Javascript en interacción con MongoSH }
+13. { Objetos y métodos utilizados en JavaScript }
+14. { Propiedades de objetos en Javascript }
+15. { Operadores utilizados en JavaScript }
+16. { Sentencias }
+17. { Combinación de MongoDB con Javascript }
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
