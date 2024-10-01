@@ -753,6 +753,7 @@ modulo
 true
 ```
 _Es un algoritmo que se suele utilizar para determinar si es par o impar el número._
+
 ---
 
 ***OPERADORES DE ASIGNACIÓN COMPUESTA:***
