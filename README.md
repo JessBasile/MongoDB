@@ -879,7 +879,7 @@ if(x==5){  //es falsa porque X es igual a 38
     print("condicion falsa")
 }
 ```
-_Respuetsa:_
+_Respuesta:_
 ```sql
 test> load ("1Sentencias.js")
 inicio del script
@@ -890,6 +890,7 @@ true
 ---
 
 ***"switch"***
+
 Es una estructura de control que permite ejecutar diferentes bloques de código según el valor de una expresión. Es una alternativa al uso de múltiples sentencias if...else if, y se utiliza cuando se tienen varias posibles condiciones o casos a evaluar. Es útil cuando se necesita comparar una expresión con varios posibles valores y ejecutar diferentes bloques de código según el resultado. Ayuda a hacer el código más corto, limpio y legible cuando se tienen muchas condiciones. El siguiente ejemplo fue aplicado sobre la cantidad de días de todos los meses del año. Se ingresa el N° del mes en el valor x, e imprime la cantidad de días que corresponde a ese mes:
 ```sql
 print("inicio del script")
