@@ -622,6 +622,22 @@ test> load ("1funciones.js")  //llamado del archivo que contiene la función
 Volkswagen
 true
 ```
+***Método PUSH en Array***
+
+Es un método del array que consiste en asignar un valor al parámetro determinado con el comando `.push`, y ese valor a su vez queda asociado al arreglo. La particularidad de este método es que NO ordena los valores (en este caso si los números estuvieran desordenados, los imprimiría textuales, incluso se trata de números enteros y no escritos en letras).
+```sql
+var arr2 = new Array()
+arr2.push("uno")
+arr2.push("dos")
+arr2.push("tres")
+print(arr2)
+```
+_Respuesta:_
+```sql
+test> load ("1funciones.js")  //Nombre del archivo que es cargado
+[ 'uno', 'dos', 'tres' ]
+true
+```
 
 ---
 ***Listado de métodos en Javascript***
@@ -670,4 +686,172 @@ true
 | `stack`          | Contiene el stack trace de un error (propiedad de los objetos `Error`).         | Error                    |
 
 ## { Operadores utilizados en JavaScript }
+
+***OPERADORES MATEMÁTICOS:***
+
+Los operadores efectúan todos los tipos de operaciones matemáticas y permiten concatenar con el símbolo + o .concat a valores string, ejemplo:
+```sql
+x=6+5
+print(x)
+z=x-8
+print(z)
+a=z*2
+print("resultado " + a)
+w=a/3
+print(w)
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")  //Nombre del archivo que es cargado
+11
+3 
+resultado 6
+2
+true
+```
+---
+
+***OPERADORES DE INCREMENTO Y DECREMENTO:***
+
+En el caso de este tipo de operadores deberán colocarse dos veces el signo que pretende decrementar o incrementar, por ejemplo:
+```sql
+w = 7
+print(++w)
+print(w)
+print(--w)
+print(w--)  //imprime el valor de w que venía siendo 8 y luego lo resta, pero no lo muestra
+print(w)  //ahora muestra el nuevo valor de w con la resta anterior incorporada
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")
+8
+8
+7
+7
+6
+true
+```
+---
+
+***OPERADORES CON MÓDULOS***
+
+Los módulos en los operadores sirven para obtener el resto de una división entre dos números. En lugar de devolver el resultado de la división (el cociente), el operador de módulo (%) devuelve lo que sobra después de dividir el número. Ejemplo práctico:
+```sql
+print("modulo")
+print(11%2)
+print(6%2)
+print(17%3)
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")
+modulo
+1     
+0
+2
+true
+```
+_Es un algoritmo que se suele utilizar para determinar si es par o impar el número._
+---
+
+***OPERADORES DE ASIGNACIÓN COMPUESTA:***
+Es una combinación de operadores aritméticos (+, -, *, /, %)con operadores de asignación (el =). Los operadores aritméticos de asignación (o de asignación compuesta) son:  +=, -=, *=, /=, %=, **=, &=, |=, ^=, >>=, <<= .En programación son utilizados para asignar valores a las variables. El operador más común es el =, que asigna el valor de la derecha a la variable de la izquierda. En el siguiente ejemplo, también se utilizan 2 casos de operadores de incremente y decremento:
+```sql
+x = 5
+x += 2 //=> x = x + 2 resultado 7
+x -= 2 //=> x = x – 2 resultado 5
+x *= 2 //=> x = x * 2 resultado 10
+x /= 2 //=> x = x / 2 resultado 5
+x %= 2 //=> x = x % 2 el resto es 1
+x++ // x = x + 1 resultado 2
+x-- // x = x – 1 resultado 1
+t = 2
+y = 2 * ((3 + x) - t) / 7 
+print(y)
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")
+0.5714285714285714
+true
+```
+`Aclaración:` Existen prioridades de operaciones, y si dos operaciones tienen igual prioridad (como por ej. la multiplicación y la división), resuelve primero el de la izquierda. En el ejemplo ut supra, primero multiplica y divide.
+
+---
+***OPERADORES DE COMPARACIÓN:***
+
+Son aquellos que efectúan una comparación y siempre devolverán la respuesta true o false, algunos ejemplos:
+```sql
+print("operadores comparacion")
+x=3 // este es un caso de una asignación
+print(x=="3")
+print(x==="3") //compara no solo el dato, sino el tipo de dato
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")
+operadores comparacion
+true
+false
+true
+```
+En el siguiente caso:
+```sql
+y=5 //este es el caso de una asignación
+print(y!="5") // el != significa distinto y es False, porque el valor es el mismo, aunque el tipo de dato sea diferente.
+print(y!==5) // True, porque es el mismo valor y tipo de dato
+print(y>=10)
+print(y<=10)
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")
+false
+true 
+false
+true
+true
+```
+---
+
+***OPERADORES LÓGICOS:***
+
+Se utilizan para combinar condiciones booleanas (que devuelven true o false), son && (representa and), || (“pipes” representa or) y ! (representa not). Estos operadores permiten realizar evaluaciones más complejas basadas en múltiples condiciones y cuentan con tablas de verdad, ejemplos a continuación:
+```sql
+print("Operadores logico")
+y=5  //continuando ejemplo anterior
+
+m = true
+n = (y=="5")
+l = m && n && (6 < 8)
+print("result: " + l)
+//TABLA DE VERDAD DEL OPERADOR AND 
+// true = true && true
+// false = true && false
+// false = false && true
+// false = false && false
+print("Invertido "  + !l)
+
+l = m || n || (6 < 8)
+print("result: " + l) 
+//TABLA DE VERDAD SOBRE EL OPERADOR OR
+// true = true || true
+// true = true || false
+// true = false || true
+// false = false || false
+print("Invertido " + !l)
+```
+_Respuesta:_
+```sql
+test> load ("1Operadores.js")
+Operadores logico
+result: true     
+Invertido false
+result: true
+Invertido false
+true
+```
+
+## { Sentencias }
 
