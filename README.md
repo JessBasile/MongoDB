@@ -857,3 +857,438 @@ true
 
 ## { Sentencias }
 
+Son instrucciones que se ejecutan en el código. Pueden incluir operadores, pero no son lo mismo.
+
+---
+
+***“if” y “else if”***
+
+Son estructuras de control que permiten ejecutar diferentes bloques de código en función de si una condición es verdadera o falsa. Ejemplo a continuación:
+```sql
+print("inicio del script")
+
+x = 38
+z= "A"
+if(x==5){  //es falsa porque X es igual a 38
+    print("Hola Mundo")
+    print("condicion verdadera")
+} else if(z != "A") {  //es falta porque z es igual a A
+     print("Z no es A")
+} else {  //es verdadera porque z es igual A
+    print("Z es A")
+    print("condicion falsa")
+}
+```
+_Respuetsa:_
+```sql
+test> load ("1Sentencias.js")
+inicio del script
+Z es A
+condicion falsa
+true
+```
+---
+
+***"switch"***
+Es una estructura de control que permite ejecutar diferentes bloques de código según el valor de una expresión. Es una alternativa al uso de múltiples sentencias if...else if, y se utiliza cuando se tienen varias posibles condiciones o casos a evaluar. Es útil cuando se necesita comparar una expresión con varios posibles valores y ejecutar diferentes bloques de código según el resultado. Ayuda a hacer el código más corto, limpio y legible cuando se tienen muchas condiciones. El siguiente ejemplo fue aplicado sobre la cantidad de días de todos los meses del año. Se ingresa el N° del mes en el valor x, e imprime la cantidad de días que corresponde a ese mes:
+```sql
+print("inicio del script")
+x=7
+switch(x){
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        print("31")
+        break
+    case 2: 
+        print("28")
+        break
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        print("30")
+        break
+    default:
+        print("Valor incorrecto")
+}
+print("fin del script")
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+inicio del script
+31
+fin del script
+true
+```
+---
+
+***"while"***
+
+Es una estructura de control en programación que se utiliza para crear bucles. Un bucle es una secuencia de instrucciones que se repiten hasta que se cumple una condición específica.
+```sql
+//Bucles
+//while
+var i = 1 //representa la inicialización o declaración
+while(i < 10) { //representa la condición
+    print("Iteracion " + i) //representa la actualización
+    i++ //la actualización de esa variable, siempre debe estar para NO ser infinita
+}
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+Iteracion 1
+Iteracion 2
+Iteracion 3
+Iteracion 4
+Iteracion 5
+Iteracion 6
+Iteracion 7
+Iteracion 8
+Iteracion 9
+true
+```
+`Característica particular de este bloque:` se ejecuta cero o más veces (de 1 a n veces).
+
+---
+
+***"do while"***
+
+`Característica particular del bloque:` se ejecuta al menos una vez (de 1 a n veces).
+```sql
+var i = 1
+do {
+    print("Iteracion " + i)
+    i++
+} while (i <= 10)
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+Iteracion 1
+Iteracion 2
+Iteracion 3
+Iteracion 4
+Iteracion 5
+Iteracion 6
+Iteracion 7
+Iteracion 8
+Iteracion 9
+Iteracion 10
+true
+```
+Pero si suponemos que a x le asignamos el valor 11, imprimirá “Iteracion 11”.
+
+---
+***"for"***
+
+```sql
+for(var i=1; i<=3; i++){
+    for(var j=1; j<=10; j++){
+        print(i + " X " + j + " = " + (i*j))
+}
+}
+print("fin del script")
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+1 X 1 = 1
+1 X 2 = 2
+1 X 3 = 3
+1 X 4 = 4
+1 X 5 = 5
+1 X 6 = 6
+1 X 7 = 7
+1 X 8 = 8
+1 X 9 = 9
+1 X 10 = 10
+2 X 1 = 2
+2 X 2 = 4
+2 X 3 = 6
+2 X 4 = 8
+2 X 5 = 10
+2 X 6 = 12
+2 X 7 = 14
+2 X 8 = 16
+2 X 9 = 18
+2 X 10 = 20
+3 X 1 = 3
+3 X 2 = 6
+3 X 3 = 9
+3 X 4 = 12
+3 X 5 = 15
+3 X 6 = 18
+3 X 7 = 21
+3 X 8 = 24
+3 X 9 = 27
+3 X 10 = 30
+fin del script
+true
+```
+La sentencia for también resulta útil utilizarse dentro de arreglos, como por ejemplo:
+```sql
+var autos = ["Ford", "Mercedes", "Fiat", "Chevrolet", "Ferrari", "Volvo", "Volkswagen"]
+for(var i=3; i < autos.length; i++){ //variable pivot: i=3
+    print(autos[i] + " vendido") //con el índice i se accede a cada elemento
+}
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+Chevrolet vendido
+Ferrari vendido  
+Volvo vendido
+Volkswagen vendido
+true
+```
+---
+
+***“for” con “if”***
+
+```sql
+var autos = ["Ford", "Mercedes", "Fiat", "Chevrolet", "Ferrari", "Volvo", "Volkswagen"]
+for(var idx in autos){
+    if(idx > 2)
+        print(autos[idx] + " alquilado")  //el índice del elemento, se lo asigna a la variable [idx]
+}
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+Chevrolet alquilado
+Ferrari alquilado  
+Volvo alquilado
+Volkswagen alquilado
+true
+```
+---
+
+***“forEach”***
+
+```sql 
+var autos = ["Ford", "Mercedes", "Fiat", "Chevrolet", "Ferrari", "Volvo", "Volkswagen"]
+autos.forEach(function(elemento){  //es una funcion anónima, porque no se le asigna un nombre
+        print(elemento + " limpio")
+})
+```
+_Respuesta:_
+```sql
+test> load ("1Sentencias.js")
+Ford limpio    
+Mercedes limpio
+Fiat limpio
+Chevrolet limpio
+Ferrari limpio
+Volvo limpio
+Volkswagen limpio
+true
+```
+---
+
+## { Combinación de MongoDB con Javascript }
+
+A continuación se detallan la creación de bases de datos con iteración de ambos motores. Script utilizado para tal fin:
+```sql
+db = db.getSiblingDB('base1');
+
+for(i = 1; i <= 10; i++) {
+    db.articulos.insertOne ( 
+    { 
+        _id: i, 
+        nombre: 'nombre ' + i,
+        stock: 100
+    } 
+  ) 
+}
+print("Se insertaron los 10 articulos")
+```
+_Respuesta:_
+```sql
+test> load ("2creacion.js")
+Se insertaron los 10 articulos
+true
+```
+La siguiente imagen con movimiento muestra la creación sobre la extensión MondoDB en Visual Studio Code con incorporación directo y simultánea en el motor MongoDB Compass.
+
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/CreacionBase-MByJS.gif" alt="CreacionBase-MByJS">
+
+---
+***CURSORES***
+
+***Creación con Cursores:*** Los cursores representan el conjunto de resultados de una consulta y proporciona un mecanismo para desplazarse a través de esos resultados, uno por uno o en bloques, permitiendo un uso más eficiente de la memoria y el procesamiento.
+```sql
+database = db.getSiblingDB('base1');
+printjson(database.getCollectionNames());
+database.articulos.drop();
+
+for(i = 1; i <= 15; i++){
+    database.articulos.insertOne({
+        _id: i,
+        nombre: 'articulo ' + i
+    })
+}
+
+var cursor = database.articulos.find()
+
+while(cursor.hasNext()){
+    //printjson(cursor.next());
+    print(cursor.next())
+}
+print ("finalizo la ejecucion")
+```
+_Respuesta:_
+```sql
+base1> load ("2creacion2.js")
+[
+  'articulos'
+]
+{ _id: 1, nombre: 'articulo 1' }
+{ _id: 2, nombre: 'articulo 2' }
+{ _id: 3, nombre: 'articulo 3' }
+{ _id: 4, nombre: 'articulo 4' }
+{ _id: 5, nombre: 'articulo 5' }
+{ _id: 6, nombre: 'articulo 6' }
+{ _id: 7, nombre: 'articulo 7' }
+{ _id: 8, nombre: 'articulo 8' }
+{ _id: 9, nombre: 'articulo 9' }
+{ _id: 10, nombre: 'articulo 10' }
+{ _id: 11, nombre: 'articulo 11' }
+{ _id: 12, nombre: 'articulo 12' }
+{ _id: 13, nombre: 'articulo 13' }
+{ _id: 14, nombre: 'articulo 14' }
+{ _id: 15, nombre: 'articulo 15' }
+finalizo la ejecucion
+true
+```
+***Creación con cursores con “hasNext” y “next”:***
+
+```sql
+print('/*------- Uso del método hasNext y next --------*/')
+db = db.getSiblingDB('base1');
+
+cursor = db.articulos.find();
+
+while(cursor.hasNext()) {  //verifica si hay más documentos
+    var actual = cursor.next() //devuelve el siguiente documento y avanza el cursor
+    print(actual.nombre)
+}
+```
+_Respuesta:_
+```sql
+base1> load ("3cursores1.js")
+/*------- Uso del método hasNext y next --------*/
+articulo 1
+articulo 2
+articulo 3
+articulo 4
+articulo 5
+articulo 6
+articulo 7
+articulo 8
+articulo 9
+articulo 10
+articulo 11
+articulo 12
+articulo 13
+articulo 14
+articulo 15
+true
+```
+***Creación con cursores con “for”:***
+
+```sql
+print('/*------- Uso for para recorrer una coleccion --------*/')
+db = db.getSiblingDB('base1');
+
+db.test.drop();
+
+for(var i=1; i<=100; i++) {
+    db.test.insertOne({valor: i}) 
+}
+
+printjson(db.getCollectionNames());
+print ("La coleccion fue cargada ok.")
+```
+_Respuesta:_
+```sql
+base1> load ("3cursores2.js")
+/*------- Uso for para recorrer una coleccion --------*/
+[
+  'test',
+  'articulos'
+]
+La coleccion fue cargada ok.
+true
+```
+`Aclaración:` Se expusieron los principales métodos de inserción a través de cursores, aunque pueden utilizarse otros, tales como: foreach, toArray, etc. Incluso con insertMany (en lugar de insertOne).
+
+***Cursores con proyecciones (projection):***
+
+Es una forma de limitar los campos que se devuelven en los resultados de una consulta. Es decir, permite seleccionar qué campos (propiedades) de los documentos quieres incluir o excluir en la respuesta, en lugar de devolver todos los campos.
+
+```sql
+print('/* ------- find query projection --------*/')
+db = db.getSiblingDB("base1");
+
+print('\n')  //salto de linea
+
+var cursor = db.personas 
+    .find( 
+        { edad: {$lt:50} }, // filtro query, personas con edad menores a 50 años
+        { nombre: 1, edad: 1, _id:0 } // projection -> 1: sale, 0: no sale 
+    ) 
+
+    // Información devuelta por el cursor
+while(cursor.hasNext()){
+    var d = cursor.next()
+    print(d)
+    print(d.nombre + " + " + d.edad)
+}
+```
+_Respuesta:_
+```sql
+test> load("3cursores7.js")
+/* ------- find query projection --------*/
+
+
+{ nombre: 'Lulu', edad: 48 }
+Lulu + 48
+{ nombre: 'Nedra', edad: 12 }
+Nedra + 12
+{ nombre: 'Greg', edad: 16 }
+Greg + 16
+{ nombre: 'Piper', edad: 18 }
+Piper + 18
+{ nombre: 'Piper', edad: 18 }
+Piper + 18
+{ nombre: 'Gunner', edad: 30 }
+Gunner + 30
+{ nombre: 'Arthur', edad: 3 }
+Arthur + 3
+{ nombre: 'Angelina', edad: 35 }
+Angelina + 35
+true
+```
+`Información adicional:` Los cursores también pueden utilizarse para consultas con filtrado que implementen: sort, limit, skip, NocursorTimeout, etc.
+
+---
+***BULK***
+
+Son operaciones masivas. Tiene un límite del lote.
+
+batchSize: determina la cantidad de documentos por lote. Se suele utilizar en conexiones lentas, para no sobrecargar.
+```sql
+objsLeftInBatch
+```
+Indica cuantos documentos pendientes tengo por procesar en ese batch, y cuando el batch se renueva, lo hace también el objsLeftBatch.
+
+--- 
+
+
