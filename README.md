@@ -757,6 +757,7 @@ _Es un algoritmo que se suele utilizar para determinar si es par o impar el núm
 ---
 
 ***OPERADORES DE ASIGNACIÓN COMPUESTA:***
+
 Es una combinación de operadores aritméticos (+, -, *, /, %)con operadores de asignación (el =). Los operadores aritméticos de asignación (o de asignación compuesta) son:  +=, -=, *=, /=, %=, **=, &=, |=, ^=, >>=, <<= .En programación son utilizados para asignar valores a las variables. El operador más común es el =, que asigna el valor de la derecha a la variable de la izquierda. En el siguiente ejemplo, también se utilizan 2 casos de operadores de incremente y decremento:
 ```sql
 x = 5
