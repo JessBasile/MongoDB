@@ -23,6 +23,10 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 + `make clean-db` limpiar la base de datos.
 + `make down` está diseñado para detener el servicio de MongoDB y eliminar los contenedores relacionados usando docker-compose, elimina los contenedores pero no los volúmenes de datos a menos que se especifique, por lo que es seguro usarlo para detener el entorno sin perder datos almacenados en volúmenes.
 
+## { Índice }
+
+[{ Instalación de MongoDB, Mongo Compass y MongoSH }](#{-Instalación-de-MongoDB,-Mongo-Compass-y-MongoSH-})
+
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
 Para iniciar la utilización de MongoDB, fue necesario no solo la instalación del motor de DB, sino de la interfaz Mongo Compass y de MongoSH, éste último para su manejo desde línea de comandos.
