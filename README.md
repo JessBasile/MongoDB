@@ -33,10 +33,10 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 6. [{ Tipos de dato MongoDB vs Tipos de dato SQL }](#-tipos-de-dato-mongodb-vs-tipos-de-dato-sql-)
 7. [{ Operaciones CRUD dentro de MongoDB Shell }](#-operaciones-crud-dentro-de-mongodb-shell-)
 8. [{ Operaciones CRUD desde MondoDB Compass }](#-operaciones-crud-desde-mondodb-compass-)
-9. [{ Importación en MongoDB }](#-importacion-en-mongodb-)
+9. [{ Importación en MongoDB }](#-importación-en-mongodb-)
 10. [{ Comandos para manipular consultas en MongoDB }]({#-comandos-para-manipular-consultas-en-mongodb-)
-11. [{ Operadores de filtrado, comparación o lógicos }](#-operadores-de-filtrado-comparacion-o-logicos-)
-12. [{ Implementación de Javascript en interacción con MongoSH }](#-implementacion-de-javascript-en-interaccion-con-mongosh-)
+11. [{ Operadores de filtrado, comparación o lógicos }](#-operadores-de-filtrado-comparación-o-lógicos-)
+12. [{ Implementación de Javascript en interacción con MongoSH }](#-implementación-de-javascript-en-interacción-con-mongosh-)
 13. { Objetos y métodos utilizados en JavaScript }
 14. { Propiedades de objetos en Javascript }
 15. { Operadores utilizados en JavaScript }
