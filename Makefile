@@ -54,13 +54,9 @@ test-collections:
 		db.experiencia_docente.find().forEach(printjson); \
 	"
 
-function-certificaciones:
-	@echo "Running JavaScript function script for calculating certifications in MongoDB"
-	@docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_FUNCTION) -- "certificaciones"
-
-function-formacion:
-	@echo "Running JavaScript function script for calculating academic formation in MongoDB"
-	@docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_FUNCTION) -- "formacion"
+functions:
+	@echo "Running JavaScript function script for calculating certifications and academic formation in MongoDB"
+	@docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_FUNCTION)
 
 access-db:
 	@echo "Accessing MongoDB shell"  # Indentado con un tabulador
