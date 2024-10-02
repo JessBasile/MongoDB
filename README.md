@@ -17,13 +17,14 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 + `make` si da un error en la conexion al socket, volver al correr el comando.
 + `make test-db` para observar la cantidad de documentos en cada colección.
 + `make test-collections` muestra los datos que posee cada documento de cada colección.
++ `make functions` muestra 2 funciones: sobre las ***certificaciones*** calculando el tiempo transcurrido desde su finalización a la actualidad, y otra función ternaria sobre la ***formación académica***, que indica si el título se encuentra Finalizado o No completado al 100% (porque falta presentación de la tesis o trabajo final).
 + `make access-db` para acceder a la base de datos.
 + `make backup` para realizar un backup de la base de datos, dentro de una carpeta denominada "dump".
 + `make export` para efectuar la exportación de todas las colecciones en distintos archivos tipo .json, dentro de una carpeta denominada "export".
 + `make clean-db` limpiar la base de datos.
 + `make down` está diseñado para detener el servicio de MongoDB y eliminar los contenedores relacionados usando docker-compose, elimina los contenedores pero no los volúmenes de datos a menos que se especifique, por lo que es seguro usarlo para detener el entorno sin perder datos almacenados en volúmenes.
 
-## { Índice }
+## { Indice }
 
 1. [{ Instalación de MongoDB, Mongo Compass y MongoSH }](#-instalación-de-mongodb-mongo-compass-y-mongosh-)
 2. [{ Implementación de MongoDB Atlas }](#-implementación-de-mongodb-atlas-)
