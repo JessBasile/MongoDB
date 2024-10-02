@@ -37,11 +37,11 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 10. [{ Comandos para manipular consultas en MongoDB }](#-comandos-para-manipular-consultas-en-mongodb-)
 11. [{ Operadores de filtrado, comparación o lógicos }](#-operadores-de-filtrado-comparación-o-lógicos-)
 12. [{ Implementación de Javascript en interacción con MongoSH }](#-implementación-de-javascript-en-interacción-con-mongosh-)
-13. { Objetos y métodos utilizados en JavaScript }
-14. { Propiedades de objetos en Javascript }
-15. { Operadores utilizados en JavaScript }
-16. { Sentencias }
-17. { Combinación de MongoDB con Javascript }
+13. [{ Objetos y métodos utilizados en JavaScript }](#-objetos-y-métodos-utilizados-en-javaScript-)
+14. [{ Propiedades de objetos en Javascript }](#-propiedades-de-objetos-en-javascript-)
+15. [{ Operadores utilizados en JavaScript }](#-operadores-utilizados-en-javaScript-)
+16. [{ Sentencias }](#-sentencias)
+17. [{ Combinación de MongoDB con Javascript }](#-combinación-de-mongodb-con-javascript-)
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
 
