@@ -40,7 +40,7 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 13. [{ Objetos y métodos utilizados en JavaScript }](#-objetos-y-métodos-utilizados-en-javaScript-)
 14. [{ Propiedades de objetos en Javascript }](#-propiedades-de-objetos-en-javascript-)
 15. [{ Operadores utilizados en JavaScript }](#-operadores-utilizados-en-javaScript-)
-16. [{ Sentencias }](#-sentencias)
+16. [{ Sentencias }](#-sentencias-)
 17. [{ Combinación de MongoDB con Javascript }](#-combinación-de-mongodb-con-javascript-)
 
 ## { Instalación de MongoDB, Mongo Compass y MongoSH }
