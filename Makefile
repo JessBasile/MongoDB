@@ -11,6 +11,7 @@ DATABASE=${MONGO_INITDB_DATABASE}
 DOCKER_COMPOSE_FILE=./docker-compose.yml
 DATABASE_INIT=./mongo_project/init.js
 DATABASE_POPULATION=./mongo_project/population.js
+DATABASE_FUNCTION=./mongo_project/functions.js
 
 .PHONY: all up objects test-db access-db down export backup
 
@@ -52,6 +53,16 @@ test-collections:
 		print('experiencia_docente:'); \
 		db.experiencia_docente.find().forEach(printjson); \
 	"
+
+DATABASE_FUNCTION=./mongo_project/functions.js
+
+function-certificaciones:
+	@echo "Running JavaScript function script for calculating certifications in MongoDB"
+	@docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_FUNCTION) -- "certificaciones"
+
+function-formacion:
+	@echo "Running JavaScript function script for calculating academic formation in MongoDB"
+	@docker exec -it $(SERVICE_NAME) mongosh "mongodb://$(USER):$(PASSWORD)@localhost:27017/$(DATABASE)?authSource=admin" --quiet --file $(DATABASE_FUNCTION) -- "formacion"
 
 access-db:
 	@echo "Accessing MongoDB shell"  # Indentado con un tabulador
