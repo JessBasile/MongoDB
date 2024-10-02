@@ -34,7 +34,7 @@ Al ingresar en la sección codespaces y en la terminal, utilizar los comandos:
 7. [{ Operaciones CRUD dentro de MongoDB Shell }](#-operaciones-crud-dentro-de-mongodb-shell-)
 8. [{ Operaciones CRUD desde MondoDB Compass }](#-operaciones-crud-desde-mondodb-compass-)
 9. [{ Importación en MongoDB }](#-importación-en-mongodb-)
-10. [{ Comandos para manipular consultas en MongoDB }]({#-comandos-para-manipular-consultas-en-mongodb-)
+10. [{ Comandos para manipular consultas en MongoDB }](#-comandos-para-manipular-consultas-en-mongodb-)
 11. [{ Operadores de filtrado, comparación o lógicos }](#-operadores-de-filtrado-comparación-o-lógicos-)
 12. [{ Implementación de Javascript en interacción con MongoSH }](#-implementación-de-javascript-en-interacción-con-mongosh-)
 13. { Objetos y métodos utilizados en JavaScript }
