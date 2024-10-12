@@ -1455,13 +1455,17 @@ true
 ```
 ---
 ***PLANES DE EJECUCIÓN:***
+
 El motor de base de datos cuenta con un optimizador y esa herramienta determinará cuál será el mejor plan de ejecución para crear el índice. Es importante considerar que de todas las posibilidades habrá un `WinningPlan` que será el ganador o elegido para implementar.
 
 ---
 ***DATOS GEOESPACIALES:***
+
 Trabajan en un formato `geojson`, no es un formato nativo de Mongodb, es un formato estándar a nivel mundial de representación de datos espaciales, y mongodb brinda soporte para la utilización de ese tipo de dato. 
 
 Para poder identificar como están formados esos datos y como pueden ser creados, se puede utilizar un visualizador en el sitio web [https://geojson.io/](https://geojson.io/) que proporciona los puntos que marcamos en el mapa la geolocalización en formato .geojson. Este tipo de formato indica la latitud, la longitud y el type con distintas alterantivas: punto, línea, cuadrado, círculo, polígono, etc.
+
+
 
 Para encontrar documentos que cumplen con ciertas características geoespaciales que se solicitan, se podrán utilizar comandos como:
 
