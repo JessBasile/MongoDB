@@ -1349,6 +1349,9 @@ Insertando documentos...
 ->1000000 documentos insertados
 true
 ```
+
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/indice.png" alt="indiceMongoDB">
+
 + ***Búsqueda de un documento y su rendimiento CON y SIN índice:***
  - _Sin índice:_
 ```sql
@@ -1465,7 +1468,7 @@ Trabajan en un formato `geojson`, no es un formato nativo de Mongodb, es un form
 
 Para poder identificar como están formados esos datos y como pueden ser creados, se puede utilizar un visualizador en el sitio web [https://geojson.io/](https://geojson.io/) que proporciona los puntos que marcamos en el mapa la geolocalización en formato .geojson. Este tipo de formato indica la latitud, la longitud y el type con distintas alterantivas: punto, línea, cuadrado, círculo, polígono, etc.
 
-
+<img src="https://github.com/JessBasile/MongoDB/raw/main/imagenes/geoespacial_gualeguaychu.png" alt="Geoespacial">
 
 Para encontrar documentos que cumplen con ciertas características geoespaciales que se solicitan, se podrán utilizar comandos como:
 
