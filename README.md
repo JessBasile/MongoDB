@@ -1312,5 +1312,162 @@ objsLeftInBatch
 Indica cuantos documentos pendientes tengo por procesar en ese batch, y cuando el batch se renueva, lo hace también el objsLeftBatch.
 
 --- 
+***INDICE***
 
+Es un elemento estructural dentro de la base de datos, que su principal características es que no se ve, pero es configurado. El que se beneficia del uso de los índices, es el motor de la base de datos. 
 
++ ***Creación de índice:***
+
+```sql
+var db = db.getSiblingDB('bdindex') // crea una base de datos
+
+db.usuarios.drop() // crea una colección
+
+print('Insertando documentos...')
+
+for(i=1; i<=1000000; i++) {  // se crean un millón de registros (documentos)
+ if(i%100000 == 0) print('->' + i + ' documentos insertados') // cada 100 mil registros se hace una impresión
+    db.usuarios.insertOne( 
+    { 
+        nombre: 'nombre' + i, 
+        edad: i % 100 
+    })}
+```
+_Respuesta:_
+```sql
+test> load("5indices1.js")
+Insertando documentos...
+->100000 documentos insertados
+->200000 documentos insertados
+->300000 documentos insertados
+->400000 documentos insertados
+->500000 documentos insertados
+->600000 documentos insertados
+->700000 documentos insertados
+->800000 documentos insertados
+->900000 documentos insertados
+->1000000 documentos insertados
+true
+```
++ ***Búsqueda de un documento y su rendimiento CON y SIN índice:***
+ - _Sin índice:_
+```sql
+var db = db.getSiblingDB('bdindex') 
+// proceso de búsqueda
+
+var cursor = db.usuarios.find({ nombre: 'nombre5555' })  // búsqueda de, registro nombre5555
+
+printjson(cursor.next())  // impresión del cursor/dato nombre5555
+
+var tiempoTranscurrido = cursor.explain('executionStats')  // busca estadisticas del curso (find)
+                               .executionStats
+                               .executionTimeMillis // búsqueda de milisegundos
+
+ print('El tiempo de búsqueda fue de ' + tiempoTranscurrido + ' mS') // imprimo tiempo de búsqueda
+```
+_Respuesta:_
+```sql
+test> load("5indices2.js")
+{
+  _id: ObjectId('67054b01e121e7601427266e'),
+  nombre: 'nombre5555',
+  edad: 55
+}
+El tiempo de búsqueda fue de 693 mS
+true
+```
+ - _Con índice:_ Solo cambia el parámetro de búsqueda, que en lugar de recurrir al nombre, lo hace a través del índice creado por el _id:
+```sql
+var cursor = db.usuarios.find({_id: ObjectId('67054b01e121e7601427266e')})
+```
+_Respuesta:_
+```sql
+test> load("5indices2.js")
+{
+  _id: ObjectId('67054b01e121e7601427266e'),
+  nombre: 'nombre5555',
+  edad: 55
+}
+El tiempo de búsqueda fue de 0 mS
+true
+```
+`Puede observarse la agilidad y eficiencia respecto la consulta sin índice respecto una con índice.`
++ ***Creación de un índice tradicional o “de campo único”:***
+```sql
+// crear el indice
+var db = db.getSiblingDB('bdindex') 
+
+db.usuarios.createIndex({nombre: 1});
+
+print("Indice creado");
+```
+_Respuesta:_
+```sql
+bdindex> load("5indices4.js")
+Indice creado
+true
+```
++ ***Creación de índice compuesto:*** Se trata de un índice que esta compuesto por dos o más campos asociados. La principal desventaja es que ocupa más espacio, dado que guarda más campos.
+```sql
+db = db.getSiblingDB("banco"); // use banco 
+
+db.cuentas.createIndex({nombre:1, direccion:1});
+
+print("Indice creado");
+```
+_Respuesta:_
+```sql
+banco> load("5indices7.js")
+Indice creado
+true
+```
+`Aclaración:` El índice puede ser dropeado bajo el comando `db.usuarios.dropIndex({nombre:1})` aplicado a este caso. El índice es mmuy eficiente para consultas con el comando find, dado que brinda agilidad y rapidez, mientras que el exceso de índices no son recomendables para querys que contienen insertado (insert), modificado (update) o eliminado (delete); esto implica un “reestructurado” del índice y es contraproducente a la eficiencia y performance del motor de base de datos.
+
+También se puede crear un índice con el nombre del índice (y no que figura el _id), por subdocumentos, sobre un arreglo (multikey), de tipo search (para efectuar luego búsquedas por texto), de tipo hash (para funciones), parciales (se crean índices sobre un determinado campo mayor a un determinado número, etc.), TTL (time to live, son índices para que luego de determinado tiempo, se borren), dispersos (sparse, consiste en solamente se indizar todos aquellos documentos donde figura un determinado campo), no sensible a minúsculas y mayúsculas, geoespaciales, etc.
+
++ ***Consulta sobre los índices que posee una determinada colección:***
+```sql
+db = db.getSiblingDB("banco"); // use banco 
+
+printjson(db.cuentas.getIndexes()); // esta instrucción devuelve un cursor
+```
+_Respuesta:_
+```sql
+banco> load("5indices8.js")
+[  
+  {
+    v: 2,
+    key: {
+      _id: 1
+    },
+    name: '_id_'
+  },
+  {
+    v: 2,
+    key: {
+      nombre: 1,
+      direccion: 1
+    },
+    name: 'nombre_1_direccion_1'
+  }
+]
+true
+```
+---
+***PLANES DE EJECUCIÓN:***
+El motor de base de datos cuenta con un optimizador y esa herramienta determinará cuál será el mejor plan de ejecución para crear el índice. Es importante considerar que de todas las posibilidades habrá un `WinningPlan` que será el ganador o elegido para implementar.
+
+---
+***DATOS GEOESPACIALES:***
+Trabajan en un formato `geojson`, no es un formato nativo de Mongodb, es un formato estándar a nivel mundial de representación de datos espaciales, y mongodb brinda soporte para la utilización de ese tipo de dato. 
+
+Para poder identificar como están formados esos datos y como pueden ser creados, se puede utilizar un visualizador en el sitio web [https://geojson.io/](https://geojson.io/) que proporciona los puntos que marcamos en el mapa la geolocalización en formato .geojson. Este tipo de formato indica la latitud, la longitud y el type con distintas alterantivas: punto, línea, cuadrado, círculo, polígono, etc.
+
+Para encontrar documentos que cumplen con ciertas características geoespaciales que se solicitan, se podrán utilizar comandos como:
+
+`$geoWithin:` Este operador se usa para encontrar documentos que contienen puntos dentro de un área geográfica específica. Se combinar con otros operadores como $geometry, $box, $polygon o $centerSphere para definir los límites geográficos. En síntesis, este comando se utiliza para buscar dentro de áreas definidas (polígonos, cajas, círculos).
+
+`$centerSphere:` Este operador define una esfera geográfica para consultas circulares, permitiendo buscar puntos dentro de un radio en el globo terráqueo. La distancia se mide en radianes. Es útil para búsquedas como encontrar puntos dentro de una cierta distancia alrededor de una ubicación central. En definitiva, este comando se utiliza específicamente para buscar en esferas basadas en coordenadas geográficas y radios en radianes, útil para búsquedas en grandes distancias.
+
+___
+<h2 align="center">¡Muchas gracias por su atención! <img src="https://github.com/ABSphreak/ABSphreak/blob/master/gifs/Hi.gif" width="30px"></h2>
